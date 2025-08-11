@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .md-code {
+    @apply max-w-fit border-2 font-semibold tracking-wider border-slate-200 text-red-600 font-mono rounded px-2 py-1;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE & Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  @keyframes slide-in {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes rotate-360 {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+   @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+   @keyframes drift {
+    0%   { transform: translate(0, 0); }
+    25%  { transform: translate(10px, -15px); }
+    50%  { transform: translate(-10px, 10px); }
+    75%  { transform: translate(15px, 15px); }
+    100% { transform: translate(0, 0); }
+  }
+
+  .animate-drift {
+    animation: drift linear infinite;
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }P
+
+  .animate-slide-in {
+    animation: slide-in 0.3s ease-out forwards;
+  }
+  .animate-rotate-360 {
+    animation: rotate-360 3s linear infinite;
+  }
+}
