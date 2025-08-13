@@ -19,14 +19,14 @@ const Header = () => {
       label: "Blogs",
       route: "#blogs",
     },
-    {
-      label: "Projects",
-      route: "#projects",
-    },
-    {
-      label: "Contact",
-      route: "#contact",
-    },
+    // {
+    //   label: "Projects",
+    //   route: "#projects",
+    // },
+    // {
+    //   label: "Contact",
+    //   route: "#contact",
+    // },
   ];
 
   const [showSideBar, setShowSideBar] = useState(false);

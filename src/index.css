@@ -1,4 +1,7 @@
 @import "tailwindcss";
+@layer base{
+  @apply overflow-hidden
+}
 
 @layer utilities {
   .md-code {
@@ -10,6 +13,9 @@
   .no-scrollbar {
     -ms-overflow-style: none; /* IE & Edge */
     scrollbar-width: none; /* Firefox */
+  }
+  .hover-scale {
+    @apply hover:scale-125 transition-transform duration-300
   }
   @keyframes slide-in {
     0% {

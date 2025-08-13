@@ -24,7 +24,7 @@ const Blogs = () => {
       <div className=" flex flex-col items-center">
         <p className="text-2xl text-center md:text-4xl">My Blogs</p>
       </div>
-      <div className=" grid grid-cols-3 gap-5  mt-[2rem] md:mt-[5rem] grid-rows-auto">
+      <div className=" grid grid-cols-1 md:grid-cols-3 gap-5  mt-[2rem] md:mt-[5rem] grid-rows-auto">
         {blogs?.map((blog) => (
           <div
             className={cn(

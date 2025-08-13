@@ -10,20 +10,26 @@ import Express from "../assets/express.svg";
 import Postgres from "../assets/postgresql.svg";
 import MongoDb from "../assets/mongodb.svg";
 import Prisma from "../assets/prisma.png";
+import Android from "../assets/androidstudio.svg";
+import Backend from "../assets/backend.svg";
+import ReactIconW from "../assets/reactWhite.svg";
 
 const Skills = () => {
   const expertise = [
     {
-      label: "Web Developer",
-      des: "Craft intuitive mobile apps for a seamless user experience",
+      label: "Web Development",
+      des: "Building dynamic web apps with React, Next.js, and cutting-edge CSS frameworks for speed and style.",
+      icon: ReactIconW,
     },
     {
-      label: "Android App Developer",
-      des: "Craft intuitive mobile apps for a seamless user experience",
+      label: "Android App Development",
+      des: "Developed Android applications using React Native, delivering high-speed and robust APKs for B2B solutions.",
+      icon: Android,
     },
     {
-      label: "Full Stack Developer",
-      des: "Craft intuitive mobile apps for a seamless user experience",
+      label: "Backend Development",
+      des: "Building scalable backends with Node.js and Express, powered by flexible SQL and NoSQL database solutions",
+      icon: Backend,
     },
   ];
 
@@ -84,7 +90,9 @@ const Skills = () => {
             <div>
               <div className="flex gap-4">
                 <div>
-                  <div className="bg-black w-[3rem] h-[3rem] rounded-[30px]"></div>
+                  <div className="bg-black w-[3rem] h-[3rem] flex justify-center items-center rounded-[30px]">
+                    <img src={item?.icon} className="w-8 h-8 m-auto" />
+                  </div>
                 </div>
                 <div>
                   <p className=" font-semibold">{item?.label}</p>

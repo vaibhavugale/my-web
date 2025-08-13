@@ -11,6 +11,8 @@ import Express from "../assets/express.svg";
 import Postgres from "../assets/postgresql.svg";
 import MongoDb from "../assets/mongodb.svg";
 import Prisma from "../assets/prisma.png";
+import Github from "../assets/github.svg";
+import Linkedin from "../assets/linkedin.svg";
 const HeroSection = () => {
   const icons = [
     ReactIcon,
@@ -53,7 +55,32 @@ const HeroSection = () => {
         <div className="bg-black outline-4 outline-white overflow-hidden w-35 h-35 rounded-full">
           <img src={profile} loading="lazy" />
         </div>
-        <p className="text-xl md:text-2xl">Hi! I'm Vaibhav Ugale ✌️</p>
+        <div className=" flex gap-3">
+          <p className="text-xl md:text-2xl">Hi! I'm Vaibhav Ugale </p>
+          <div className="flex  gap-3">
+            <a
+              href="https://www.linkedin.com/in/vaibhavugale-959aa2217"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src={Linkedin}
+                className="w-8 h-8 cursor-pointer hover-scale  "
+              />
+            </a>
+            <a
+              href="https://github.com/vaibhavugale"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src={Github}
+                className="w-8 h-8 cursor-pointer hover-scale "
+              />
+            </a>
+          </div>
+        </div>
+        <p className="text-xl md:text-2xl">+91 93701 41891</p>
       </div>
 
       <p className="text-3xl md:text-6xl  text-center">
