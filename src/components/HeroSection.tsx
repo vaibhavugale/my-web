@@ -14,6 +14,7 @@ import Prisma from "../assets/prisma.png";
 import Github from "../assets/github.svg";
 import Linkedin from "../assets/linkedin.svg";
 import resume from "../assets/vaibhav_ugale.pdf"
+
 const HeroSection = () => {
   const icons = [
     ReactIcon,
