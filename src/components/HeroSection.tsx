@@ -13,6 +13,7 @@ import MongoDb from "../assets/mongodb.svg";
 import Prisma from "../assets/prisma.png";
 import Github from "../assets/github.svg";
 import Linkedin from "../assets/linkedin.svg";
+import resume from "../assets/vaibhav_ugale.pdf"
 const HeroSection = () => {
   const icons = [
     ReactIcon,
@@ -97,10 +98,10 @@ const HeroSection = () => {
         <button className="bg-black text-white p-3 px-6 hover:bg-black/70 cursor-pointer rounded-full">
           Hire Me
         </button>
-        <div className="flex gap-3 ">
+        <a href={resume}  download={"vaibhav_ugale"} className="flex cursor-pointer gap-3 ">
           <p>Download CV </p>
           <Download className="w-5 h-5" />
-        </div>
+        </a>
       </div>
     </div>
   );
