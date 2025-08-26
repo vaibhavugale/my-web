@@ -1,6 +1,7 @@
 import { ExternalLink } from "lucide-react";
 import ReactPatterns from "../assets/reactPatterns.png";
 import DefaultImage from "../assets/defaultImage.png";
+import TailwindImage from "../assets/tailwind.png"
 import { cn } from "../utility";
 const Blogs = () => {
   const blogs = [
@@ -10,6 +11,7 @@ const Blogs = () => {
       desc: "In this blog, we explore the 'S' of the SOLID principles,the Single Responsibility.Principle with a real-world React example.",
       link: "https://juniper-meat-106.notion.site/React-Pattern-Single-Responsibility-in-Component-Design-23a294793fee80a4bb06fe044ea3a9d4",
       containerClass: "!border-[#2cd4fe] ",
+      id:"react-pattern"
     },
     {
       image: DefaultImage,
@@ -17,6 +19,15 @@ const Blogs = () => {
       desc: "A real-world debugging story where API data behaved differently than dummy data, revealing why understanding data mutability and structure is crucial in JavaScript",
       link: "https://juniper-meat-106.notion.site/structuredClone-Deep-Copy-JavaScript-236294793fee805db8c2f87f3941f657?pvs=74",
       containerClass: "!border-yellow-400",
+      id:"structuredClone"
+    },
+    {
+      image: TailwindImage,
+      title: "cn vs clsx vs twMerge — Tailwind Utility Management",
+      desc: "Learn why string concatenation fails with Tailwind, how clsx handles conditional classes, twMerge resolves conflicts, and cn combines both for clean, maintainable components.",
+      link: "https://juniper-meat-106.notion.site/cn-vs-clsx-vs-twMerge-25a294793fee80b4a509e91830435392",
+      containerClass: "!border-blue-400",
+      id:"cn-clsx-twMerge"
     },
   ];
   return (
@@ -27,6 +38,7 @@ const Blogs = () => {
       <div className=" grid grid-cols-1 md:grid-cols-3 gap-5  mt-[2rem] md:mt-[5rem] grid-rows-auto">
         {blogs?.map((blog) => (
           <div
+          id={blog.id}
             className={cn(
               " border justify-baseline p-3 flex flex-col gap-2  shadow-md  rounded",
               blog.containerClass
