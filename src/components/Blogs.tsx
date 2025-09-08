@@ -35,7 +35,7 @@ const Blogs = () => {
       <div className=" flex flex-col items-center">
         <p className="text-2xl text-center md:text-4xl">My Blogs</p>
       </div>
-      <div className=" grid grid-cols-1 md:grid-cols-3 gap-5  mt-[2rem] md:mt-[5rem] grid-rows-auto">
+      <div className=" grid grid-cols-1 md:grid-cols-4 gap-5  mt-[2rem] md:mt-[5rem] grid-rows-auto">
         {blogs?.map((blog) => (
           <div
           id={blog.id}
@@ -46,12 +46,12 @@ const Blogs = () => {
           >
             <img
               src={blog?.image}
-              className=" h-40 rounded w-full object-cover"
+              className=" h-30 rounded w-full object-cover"
             />
-            <p className=" text-md font-semibold tracking-wider">
+            <p className=" text-sm font-semibold tracking-wider">
               {blog?.title}
             </p>
-            <p className=" text-md tracking-wider">{blog?.desc}</p>
+            <p className=" text-sm tracking-wider">{blog?.desc?.substring(0,150)+"..."}</p>
             <a
               href={blog.link}
               target="_blank"
