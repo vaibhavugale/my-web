@@ -2,6 +2,7 @@ import { ExternalLink } from "lucide-react";
 import ReactPatterns from "../assets/reactPatterns.png";
 import DefaultImage from "../assets/defaultImage.png";
 import TailwindImage from "../assets/tailwind.png"
+import EtagAnd304 from "../assets/etag-304.png"
 import { cn } from "../utility";
 const Blogs = () => {
   const blogs = [
@@ -28,6 +29,14 @@ const Blogs = () => {
       link: "https://juniper-meat-106.notion.site/cn-vs-clsx-vs-twMerge-25a294793fee80b4a509e91830435392",
       containerClass: "!border-blue-400",
       id:"cn-clsx-twMerge"
+    },
+    {
+      image: EtagAnd304,
+      title: "ETag and If-None-Match Headers",
+      desc: "Understand how HTTP 304 and ETag reduce bandwidth usage, speed up page loads, and keep your cached content up to date.",
+      link: "https://juniper-meat-106.notion.site/ETag-and-If-None-Match-Headers-The-Secret-Behind-304-Not-Modified-Responses-286294793fee80f98f26d533ea50f0e1",
+      containerClass: "!border-blue-400",
+      id:"etag-304"
     },
   ];
   return (
