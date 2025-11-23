@@ -6,7 +6,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-center gap-3">
           <p>Email : ugalevaibhav00@gmail.com</p>
           <p className="hidden md:block">|</p>
-          <p>Linkiedn : www.linkedin.com/in/vaibhavugale-959aa2217 </p>
+          <p>linkedin : www.linkedin.com/in/vaibhavugale-959aa2217 </p>
           <p className="hidden md:block">|</p>
           <p>Mobile: +91 9370141891</p>
         </div>

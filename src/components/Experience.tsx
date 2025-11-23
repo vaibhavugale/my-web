@@ -3,7 +3,7 @@ const Experience = () => {
     {
       metaData: {
         title: "Emertech Innovations (Full Time)",
-        des: "1.1 years  (Aug 2024 - Present) - On Site",
+        des: "(Aug 2024 - Present) - On Site",
       },
       details: {
         label: "Frontend Developer",
