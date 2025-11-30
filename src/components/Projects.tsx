@@ -20,7 +20,7 @@ const Projects = () => {
             desc: "Study Notion is an innovative ed-tech platform designed to enhance the learning experience for students and teachers alike. It offers a variety of features to facilitate effective teaching and learning.",
             link: "https://juniper-meat-106.notion.site/Animated-Marquee-2b4294793fee800fadebda8035228e6c",
             containerClass: "!border-[#A27E80]  ",
-            id: "react-pattern-1"
+            id: "study-notion"
         },
 
     ];

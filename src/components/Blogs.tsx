@@ -3,17 +3,26 @@ import ReactPatterns from "../assets/reactPatterns.png";
 import DefaultImage from "../assets/defaultImage.png";
 import TailwindImage from "../assets/tailwind.png"
 import EtagAnd304 from "../assets/etag-304.png"
+import main_thread from "../assets/main_threa_blog.png"
 import { cn } from "../utility";
 import { usePagination } from "../hooks/usePagination";
 const Blogs = () => {
   const blogs = [
+      {
+      image:main_thread,
+      title: "Main-thread blocking impacted my application",
+      desc: " In this article, I explain how main-thread blocking impacted my application.",
+      link: "https://juniper-meat-106.notion.site/Main-Thread-Blocking-Explained-2b8294793fee8029bdf4c210c10deeb1",
+      containerClass: "!border-[#2cd4fe] ",
+      id: "react-pattern"
+    },
     {
       image: ReactPatterns,
       title: "React Pattern: Single Responsibility in Component Design",
       desc: "In this blog, we explore the 'S' of the SOLID principles,the Single Responsibility.Principle with a real-world React example.",
       link: "https://juniper-meat-106.notion.site/React-Pattern-s-232294793fee8105a9cefdcbefff3b70",
       containerClass: "!border-[#2cd4fe] ",
-      id: "react-pattern"
+      id: "single-responsibility"
     },
     {
       image: DefaultImage,

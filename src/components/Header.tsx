@@ -40,7 +40,7 @@ const Header = () => {
       <div className="hidden md:flex gap-6  justify-between">
         {menu?.map((item) => {
           return (
-            <a href={item.route} className="cursor-pointer">
+            <a href={item.route} className="cursor-pointer" key={item.route}>
               {item?.label}
             </a>
           );
@@ -64,6 +64,7 @@ const Header = () => {
                   onClick={() => setShowSideBar(false)}
                   href={item.route}
                   className="cursor-pointer"
+                  key={item.route}
                 >
                   {item?.label}
                 </a>

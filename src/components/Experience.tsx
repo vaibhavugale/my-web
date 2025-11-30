@@ -44,7 +44,7 @@ const Experience = () => {
       </div>
       <div className="flex  gap-8   mt-[2rem] md:mt-[5rem] flex-col">
         {items?.map((block, index) => (
-          <div className="">
+          <div className="" key={index}>
             <div className=" flex flex-col md:flex-row justify-between">
               <div className="flex-1">
                 <p className="font-semibold">{block.metaData.title}</p>

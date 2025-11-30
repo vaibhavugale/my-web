@@ -87,7 +87,7 @@ const Skills = () => {
       <div className="flex-1 flex flex-col gap-8 justify-between">
         {expertise?.map((item) => {
           return (
-            <div>
+            <div key={item.label}>
               <div className="flex gap-4">
                 <div>
                   <div className="bg-black w-[3rem] h-[3rem] flex justify-center items-center rounded-[30px]">
@@ -113,6 +113,7 @@ const Skills = () => {
           <div className="flex flex-wrap gap-1">
             {skills.frontend.map((skill) => (
               <div
+                key={skill.name}
                 className={cn(
                   "md-code flex items-center gap-3",
                   skill.textClassName
@@ -132,6 +133,7 @@ const Skills = () => {
           <div className="flex flex-wrap gap-1">
             {skills.backend.map((skill) => (
               <div
+                key={skill.name}
                 className={cn(
                   "md-code flex items-center gap-3",
                   skill.textClassName
