@@ -11,17 +11,7 @@ const Experience = () => {
           "Building high-performance B2B web dashboards and Android applications, improving user experience and supporting critical business workflows.",
       },
     },
-    {
-      metaData: {
-        title: "Suven Consultants and Technology Pvt.Ltd. (Internship)",
-        des: "6 Month  (Jun 2023 - Nov 2023) - Remote",
-      },
-      details: {
-        label: "Web Developer",
-        description:
-          "Developed an analytics dashboard for a Buy Now, Pay Later (BNPL) service, processing large datasets and delivering clear insights via dynamic tables and interactive charts.",
-      },
-    },
+
     {
       metaData: {
         title: "Savitribai Phule Pune University (India)",

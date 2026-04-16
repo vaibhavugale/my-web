@@ -96,12 +96,11 @@ const HeroSection = () => {
       </p>
 
       <div className=" flex items-center  gap-6">
-        <button className="bg-black text-white p-3 px-6 hover:bg-black/70 cursor-pointer rounded-full">
-          Hire Me
-        </button>
-        <a href={resume}  download={"vaibhav_ugale"} className="flex cursor-pointer gap-3 ">
+
+        <a href={resume} download={"vaibhav_ugale"} className="bg-black text-white flex gap-4 p-3 px-6 hover:bg-black/70 cursor-pointer rounded-full">
           <p>Download CV </p>
           <Download className="w-5 h-5" />
+
         </a>
       </div>
     </div>
