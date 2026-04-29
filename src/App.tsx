@@ -5,7 +5,7 @@ import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
 import Skills from "./components/Skills";
 import Footer from "./components/Footer";
-import Projects from "./components/Projects";
+// import Projects from "./components/Projects";
 // import Footer from "./components/Footer";
 
 function App() {
