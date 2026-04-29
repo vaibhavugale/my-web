@@ -30,7 +30,7 @@ function App() {
       <Skills />
       <Experience />
       <Blogs />
-      <Projects />
+      {/* <Projects /> */}
       <Footer />
       <div
         ref={blurRef}

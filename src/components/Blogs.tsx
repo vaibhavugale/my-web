@@ -59,56 +59,89 @@ const Blogs = () => {
   } = usePagination({ data: blogs, itemsPerPage: 4 });
 
   return (
-    <div id="blogs" className="">
-      <div className=" flex flex-col items-center">
-        <p className="text-2xl  md:text-4xl">Blogs</p>
+    <div id="blogs" className="w-full max-w-7xl mx-auto px-4 py-12 md:py-20">
+      <div className="flex flex-col items-center mb-12 md:mb-20">
+        <h2 className="text-3xl md:text-5xl font-bold tracking-tight">Featured Blogs</h2>
+        <div className="h-1.5 w-24 bg-gradient-to-r from-blue-500 to-[#2cd4fe] rounded-full mt-6"></div>
       </div>
-      <div className=" grid grid-cols-1 md:grid-cols-4 gap-5  mt-[2rem] md:mt-[5rem] grid-rows-auto">
+      
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
         {currentBlogs?.map((blog) => (
           <div
             key={blog.id}
             id={blog.id}
             className={cn(
-              " border justify-baseline p-3 flex flex-col gap-2  shadow-md  rounded",
+              "group relative flex flex-col p-3 rounded-3xl border bg-white dark:bg-[#0f0f11] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_20px_40px_-15px_rgba(44,212,254,0.15)]",
               blog.containerClass
             )}
           >
-            <img
-              src={blog?.image}
-              className=" h-30 rounded w-full object-cover"
-            />
-            <p className=" text-sm font-semibold tracking-wider">
-              {blog?.title}
-            </p>
-            <p className=" text-sm tracking-wider">{blog?.desc?.substring(0, 150) + "..."}</p>
-            <a
-              href={blog.link}
-              target="_blank"
-              className=" flex text-blue-300  mt-auto items-center gap-2"
-            >
-              Read More <ExternalLink className="w-5 h-5" />
-            </a>
+            <div className="w-full overflow-hidden rounded-2xl relative">
+              <div className="absolute inset-0 bg-black/10 dark:bg-transparent group-hover:bg-transparent transition-colors duration-500 z-10" />
+              <img
+                src={blog?.image}
+                alt={blog?.title}
+                className="h-40 sm:h-48 w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+              />
+            </div>
+            <div className="flex flex-col flex-1 mt-4 px-2 pb-1">
+              <div className="mb-6 flex-1">
+                <h3 className="text-lg font-bold tracking-tight mb-2 line-clamp-2 text-gray-900 dark:text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-blue-500 group-hover:to-[#2cd4fe] transition-all duration-300">
+                  {blog?.title}
+                </h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400 line-clamp-3 leading-relaxed">
+                  {blog?.desc}
+                </p>
+              </div>
+              <div className="mt-auto">
+                <a
+                  href={blog.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center justify-between w-full pt-4 border-t border-gray-100 dark:border-gray-800/80 group/btn"
+                >
+                  <span className="text-sm font-medium text-gray-800 dark:text-gray-200 group-hover/btn:text-blue-500 dark:group-hover/btn:text-blue-400 transition-colors">Read Article</span>
+                  <div className="h-8 w-8 rounded-full bg-gray-50 dark:bg-gray-900/50 flex items-center justify-center transition-all duration-300 group-hover/btn:bg-blue-50 dark:group-hover/btn:bg-blue-500/10 group-hover/btn:scale-110">
+                    <ExternalLink className="w-4 h-4 text-gray-600 dark:text-gray-400 group-hover/btn:text-blue-500 dark:group-hover/btn:text-blue-400" />
+                  </div>
+                </a>
+              </div>
+            </div>
           </div>
         ))}
       </div>
+
       {totalPages > 1 && (
-        <div className="flex justify-center items-center gap-6 mt-10">
+        <div className="flex justify-center items-center gap-4 mt-20">
           <button
             onClick={prevPage}
             disabled={currentPage === 1}
-            className="p-2 border rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 disabled:opacity-30 disabled:cursor-not-allowed"
+            className="flex items-center justify-center w-14 h-14 rounded-2xl bg-white dark:bg-[#0f0f11] border border-gray-200 dark:border-gray-800 text-gray-600 dark:text-gray-400 transition-all duration-300 hover:bg-gray-50 dark:hover:bg-gray-900 hover:border-blue-500/50 hover:text-blue-500 disabled:opacity-40 disabled:pointer-events-none hover:shadow-[0_0_20px_rgba(59,130,246,0.15)]"
+            aria-label="Previous page"
           >
-            <ChevronLeft className="w-5 h-5" />
+            <ChevronLeft className="w-6 h-6" />
           </button>
-          <span className="text-md font-medium text-gray-700 dark:text-gray-300">
-            Page {currentPage} of {totalPages}
-          </span>
+          
+          <div className="flex items-center gap-2.5 px-6 py-4 rounded-2xl bg-white dark:bg-[#0f0f11] border border-gray-200 dark:border-gray-800">
+            {Array.from({ length: totalPages }).map((_, idx) => (
+              <div 
+                key={idx}
+                className={cn(
+                  "h-2.5 rounded-full transition-all duration-500 ease-out",
+                  currentPage === idx + 1 
+                    ? "w-8 bg-gradient-to-r from-blue-500 to-[#2cd4fe]" 
+                    : "w-2.5 bg-gray-300 dark:bg-gray-700"
+                )}
+              />
+            ))}
+          </div>
+
           <button
             onClick={nextPage}
             disabled={currentPage === totalPages}
-            className="p-2 border rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 disabled:opacity-30 disabled:cursor-not-allowed"
+            className="flex items-center justify-center w-14 h-14 rounded-2xl bg-white dark:bg-[#0f0f11] border border-gray-200 dark:border-gray-800 text-gray-600 dark:text-gray-400 transition-all duration-300 hover:bg-gray-50 dark:hover:bg-gray-900 hover:border-[#2cd4fe]/50 hover:text-[#2cd4fe] disabled:opacity-40 disabled:pointer-events-none hover:shadow-[0_0_20px_rgba(44,212,254,0.15)]"
+            aria-label="Next page"
           >
-            <ChevronRight className="w-5 h-5" />
+            <ChevronRight className="w-6 h-6" />
           </button>
         </div>
       )}
