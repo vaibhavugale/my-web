@@ -7,12 +7,12 @@ import { usePagination } from "../hooks/usePagination";
 const Projects = () => {
     const projects = [
         {
-            image: RN_Marquee,
-            title: "React Native Reanimated : Animated Marquee",
-            desc: "In this blog, we explore how to create an animated marquee effect using React Native Reanimated library. We dive into the implementation details and provide code examples to help you get started.",
-            link: "https://juniper-meat-106.notion.site/Animated-Marquee-2b4294793fee800fadebda8035228e6c",
+            image: RN_Marquee, // using placeholder image
+            title: "Q2Q (Web3 E-Commerce Marketplace)",
+            desc: "Built secure authentication workflows using JWT & OAuth2. Implemented deep linking with Web3 wallet integration for blockchain transactions, real-time socket connections via foreground service, and used NativeWind & Reanimated for styling.",
+            link: "https://play.google.com/store/apps/details?id=com.quettaqmarketplaceapp",
             containerClass: "!border-[#A27E80]  ",
-            id: "react-pattern-1"
+            id: "q2q-web3"
         },
         {
             image: studyNotion,

@@ -7,8 +7,7 @@ const Experience = () => {
       },
       details: {
         label: "Software Engineer",
-        description:
-          "Building high-performance B2B web dashboards and Android applications, improving user experience and supporting critical business workflows.",
+        description: "I work as a Software Engineer where I'm involved in the full product development cycle — from understanding requirements and participating in design discussions to building and shipping features across multiple live products. I collaborate closely with the team on architecture decisions, problem-solving, and ensuring smooth execution from planning to deployment."
       },
     },
 
@@ -32,18 +31,17 @@ const Experience = () => {
           My Education & Experience{" "}
         </p>
       </div>
-      
+
       <div className="relative mt-[2rem] md:mt-[5rem]">
         {/* Center line */}
         <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-[1px] bg-black md:transform md:-translate-x-1/2"></div>
 
         <div className="space-y-8 md:space-y-12 pl-12 md:pl-0">
           {items?.map((block, index) => (
-            <div 
+            <div
               key={index}
-              className={`flex md:flex-row flex-row items-start gap-4 md:gap-0 relative ${
-                index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-              }`}
+              className={`flex md:flex-row flex-row items-start gap-4 md:gap-0 relative ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                }`}
             >
               {/* Dot on line - Mobile */}
               <div className="md:hidden absolute -left-3 top-2 w-2 h-2 bg-black rounded-full"></div>
@@ -56,9 +54,9 @@ const Experience = () => {
                 <div className="p-5 md:p-6 rounded-lg bg-slate-50">
                   <p className="font-semibold text-lg">{block.metaData.title}</p>
                   <p className="text-sm tracking-wider text-gray-600 mb-3">{block.metaData.des}</p>
-                  
+
                   <div className="h-px bg-slate-300 my-3"></div>
-                  
+
                   <p className="font-semibold text-base mb-2">{block.details.label}</p>
                   <p className="tracking-wider text-sm leading-relaxed text-gray-700">
                     {block.details.description}

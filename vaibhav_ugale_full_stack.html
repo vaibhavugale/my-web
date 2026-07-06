@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vaibhav_ugale_full_stack</title>
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      font-size: 10.5pt;
+      color: #000;
+      background: #e8e8e8;
+      line-height: 1.5;
+    }
+
+    /* ── DOWNLOAD BAR ── */
+    .download-bar {
+      text-align: center;
+      padding: 12px;
+      background: #fff;
+      border-bottom: 1px solid #ccc;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .download-bar button {
+      background: #1DB100;
+      color: #fff;
+      border: none;
+      padding: 8px 24px;
+      font-size: 13px;
+      font-family: Arial, sans-serif;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .download-bar button:hover {
+      background: #148000;
+    }
+
+    /* ── PAGE ── */
+    .page {
+      max-width: 800px;
+      margin: 28px auto;
+      padding: 16px 48px 40px 48px;
+      background: #fff;
+      box-shadow: 0 2px 14px rgba(0, 0, 0, 0.15);
+    }
+
+    /* ── HEADER ── */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 4px solid #1DB100;
+      border-bottom: 4px solid #1DB100;
+      padding: 8px 16px;
+      margin-bottom: 20px;
+      gap: 24px;
+    }
+
+    .header-left {
+      text-align: center;
+      flex: 1;
+    }
+
+    .header-left h1 {
+      font-size: 22pt;
+      font-weight: 700;
+      color: #1DB100;
+      letter-spacing: 0.02em;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+    }
+
+    .header-left .contact-line {
+      font-size: 11pt;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .header-left .tagline {
+      font-size: 10.5pt;
+      font-weight: 400;
+      color: #333;
+    }
+
+    .header-right {
+      text-align: left;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .header-right a {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #2b5797;
+      font-size: 10pt;
+      text-decoration: none;
+      font-weight: 400;
+    }
+
+    .header-right a:hover {
+      text-decoration: underline;
+    }
+
+    /* ── MAIN CONTENT (VERTICAL LAYOUT) ── */
+    .main-content {
+      display: block;
+      text-align: justify;
+    }
+
+    .left-column {
+      display: block;
+      width: 100%;
+    }
+
+    .right-column {
+      display: block;
+      width: 100%;
+    }
+
+    /* Prevent sections from breaking awkwardly */
+    .project {
+      margin-bottom: 20px;
+    }
+
+    .experience-block {
+      margin-bottom: 16px;
+    }
+
+    .education-block {
+      margin-bottom: 16px;
+    }
+
+    /* ── SECTION TITLE (green) ── */
+    .section-title {
+      font-size: 11pt;
+      font-weight: 700;
+      color: #1DB100;
+      margin-bottom: 4px;
+      margin-top: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── SKILLS ── */
+    .skills ul {
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+
+    .skills ul li {
+      font-size: 10pt;
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+
+    /* ── JOB ── */
+    .job-company {
+      font-size: 11pt;
+      font-weight: 700;
+      color: #2b5797;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .job-role-date {
+      font-size: 10.5pt;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .job-role-date span.date {
+      color: #2b5797;
+      text-transform: uppercase;
+    }
+
+    /* ── PROJECT ── */
+    .project-title {
+      font-size: 10.5pt;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: #2b5797;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    ul li {
+      font-size: 10pt;
+      margin-bottom: 4px;
+      list-style: disc;
+      line-height: 1.4;
+    }
+
+    /* ── EDUCATION ── */
+    .education-block p {
+      font-size: 10pt;
+      line-height: 1.4;
+    }
+
+    .education-block ul {
+      margin-top: 4px;
+    }
+
+    /* ── PRINT ── */
+    @media print {
+      @page {
+        size: A4 portrait;
+        margin: 0;
+      }
+
+      body {
+        background: #fff;
+        font-size: 8.5pt;
+        line-height: 1.35;
+      }
+
+      .download-bar {
+        display: none;
+      }
+
+      .page {
+        max-width: 100%;
+        margin: 0;
+        padding: 8mm 12mm 4mm 12mm;
+        box-shadow: none;
+      }
+
+      .header {
+        padding: 2px 0;
+        margin-bottom: 6px;
+      }
+
+      .header-left h1 {
+        font-size: 15pt;
+        margin-bottom: 2px;
+      }
+
+      .section-title {
+        margin-bottom: 2px;
+        margin-top: 6px;
+        font-size: 10pt;
+      }
+
+      .skills ul {
+        margin-bottom: 8px;
+      }
+
+      .project {
+        margin-bottom: 8px;
+      }
+
+      .project-title {
+        margin-bottom: 2px;
+        margin-top: 6px;
+      }
+
+      .experience-block {
+        margin-bottom: 8px;
+      }
+
+      ul {
+        padding-left: 16px;
+      }
+
+      ul li {
+        margin-bottom: 2px;
+      }
+
+      .job-role-date {
+        margin-bottom: 2px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="download-bar">
+    <button id="save-html-btn" onclick="saveChanges()" style="background: #1DB100; margin-right: 12px;">💾 Save HTML
+      Changes</button>
+    <button onclick="window.print()">⬇ Download as PDF</button>
+  </div>
+
+  <div class="page">
+    <!-- HEADER -->
+    <div class="header">
+      <div class="header-left">
+        <h1>VAIBHAV UGALE</h1>
+        <p class="contact-line">Software Engineer | +91 9370141891</p>
+        <p class="tagline">Mumbai, India</p>
+      </div>
+      <div class="header-right">
+        <a href="mailto:ugalevaibhav00@gmail.com">
+          <svg height="14" width="14" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 12.713l11.985-8.713h-23.97l11.985 8.713zm0 2.574l-12-8.725v13.438h24v-13.438l-12 8.725z">
+            </path>
+          </svg>
+          ugalevaibhav00@gmail.com
+        </a>
+        <a href="https://www.linkedin.com/in/vaibhavugale-959aa2217" target="_blank">
+          <svg height="14" width="14" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z">
+            </path>
+          </svg>
+          linkedin.com/in/vaibhavugale-959aa2217
+        </a>
+        <a href="https://github.com/vaibhavugale" target="_blank">
+          <svg height="14" width="14" viewBox="0 0 16 16" fill="currentColor">
+            <path
+              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+            </path>
+          </svg>
+          vaibhavugale
+        </a>
+        <a href="https://vaibhavugale.thesudoer.in" target="_blank">
+          <svg height="14" width="14" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm7.753 17.332c-.902 1.401-2.128 2.56-3.551 3.376-.842-1.74-1.579-3.665-2.102-5.708h5.653zm-6.753 5.485c-1.859-1.282-3.305-3.336-4.184-5.698h8.369c-.879 2.363-2.325 4.417-4.185 5.698zm0-15.634c1.86 1.281 3.306 3.335 4.185 5.698h-8.37c.879-2.362 2.325-4.416 4.185-5.698zm-4.757 7.617c.523 2.043 1.26 3.968 2.103 5.708-1.423-.816-2.649-1.975-3.551-3.376h1.448zm-1.127-1.908h-1.637c.28-1.611.89-3.111 1.761-4.423h1.347c-.63 1.349-1.126 2.822-1.471 4.423zm2.593-5.309c-1.26.969-2.316 2.213-3.109 3.659h-2.14c1.171-2.274 2.91-4.195 5.105-5.452.052.593.1 1.192.144 1.793zm8.396 3.659c-.793-1.446-1.849-2.69-3.109-3.659.044-.601.092-1.2.144-1.793 2.195 1.257 3.934 3.178 5.105 5.452h-2.14z">
+            </path>
+          </svg>
+          Portfolio
+        </a>
+      </div>
+    </div>
+
+    <div class="main-content">
+
+      <!-- LEFT COLUMN -->
+      <div class="left-column">
+        <!-- SKILLS -->
+        <div class="section-title">SKILLS</div>
+        <div class="skills">
+          <ul>
+            <li style="outline: none; outline-offset: 2px; border-radius: 2px;"><strong>Frontend:</strong> JavaScript ,
+              TypeScript , <strong>React.js</strong> , <strong>React Native</strong> , <strong>Next.js</strong> , Redux / RTK , React Hooks , Tailwind CSS , MUI , Android
+              , Webpack , Vite , Jest</li>
+            <li style="outline: none; outline-offset: 2px; border-radius: 2px;"><strong>Backend &amp;
+                Databases:</strong> <strong>Node.js</strong> , Express.js , <strong>FastAPI</strong> , <strong>PostgreSQL</strong> , <strong>MongoDB</strong> , Redis , MMKV , <strong>REST API</strong> ,
+              <strong>LangChain</strong> , <strong>LangGraph</strong> , <strong>LangSmith</strong> , WebAuthn</li>
+            <li style="outline: none; outline-offset: 2px; border-radius: 2px;"><strong>Tools &amp;
+                Practices:</strong> Git, <strong>CI/CD</strong>, Agile, Turborepo , Monorepo , Figma , <strong>Docker</strong></li>
+          </ul>
+        </div>
+
+        <!-- EXPERIENCE -->
+        <div class="section-title">EXPERIENCE</div>
+
+        <div class="experience-block">
+          <p class="job-company">EMERTECH INNOVATIONS</p>
+          <p class="job-role-date">Software Engineer <span class="date">Aug 2024 – Present</span></p>
+
+          <div class="project">
+            <p class="project-title">Viginyx (ADR Reporting Platform)</p>
+            <ul>
+              <li>Implemented an automated ADR (Adverse Drug Reaction) reporting workflow using <strong>LangChain</strong> and <strong>LangGraph</strong>,
+                enabling structured multi-step processing, decision flows, and backend-driven orchestration.</li>
+              <li>Designed and built a <strong>Generative AI</strong> solution using <strong>Python</strong>, <strong>LangChain</strong>, and <strong>LangGraph</strong>, implementing <strong>RAG</strong>
+                with <strong>Vector Databases</strong> to enable structured multi-step processing of
+                <strong>unstructured and structured healthcare data</strong>.</li>
+              <li>Added <strong>Human-in-the-Loop (HITL)</strong> validation with checkpointing for controlled approvals and
+                fault-tolerant
+                workflow resumption, while integrating <strong>Server-Sent Events (SSE)</strong> for real-time frontend updates and
+                <strong>LangSmith</strong> for observability and debugging of <strong>LLM execution flows</strong>.</li>
+              <li>Designed secure session management using <strong>Redis</strong>, improving authentication performance, reliability, and
+                scalable session handling across the system.</li>
+            </ul>
+          </div>
+          <div class="project">
+            <p class="project-title">BKT Rubber Trace (EUDR-Compliant Tire Production)</p>
+            <ul>
+              <li>A rubber traceability solution for BKT, ensuring compliance with <strong>European Union Due Diligence
+                Regulations (EUDR)</strong>.</li>
+              <li>Engineered an industrial traceability system scaling to process <strong>40,000+ QR prints and scans daily</strong>,
+                resulting in a <strong>100% accurate mapping</strong> of tyre compounds and reduced manual tracking errors.</li>
+              <li>Developed a <strong>QR code generation module</strong> producing printable output, integrated with industrial scanners
+              </li>
+              <li>Implemented secure login and an APK auto-update feature for closed-premise deployment environments.
+              </li>
+              <li>Developed algorithms to auto-calculate polygon areas and <strong>point-in-polygon validations</strong>, followed by
+                comprehensive system and integration testing.</li>
+              <li>Designed efficient offline-first <strong>GIS data storage</strong> using <strong>MMKV</strong> with integer-encoded (E6) geocoordinates,
+                reducing polygon storage size by up to <strong>~60%</strong> while maintaining mapping precision.</li>
+              <li>Designed and developed a <strong>role-based access system</strong> ensuring secure, permission-based access to data,
+                paired with an interactive analytics dashboard for real-time reporting and decision-making.</li>
+              <li>Built a complete authentication system spanning frontend and backend, including <strong>Google
+                Authenticator-based 2FA</strong>, <strong>WebAuthn passkeys</strong>, and secure session management with <strong>Redis Cache</strong>.</li>
+            </ul>
+          </div>
+
+
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div class="right-column">
+        <!-- PERSONAL PROJECTS -->
+        <div class="project">
+          <p class="project-title">Q2Q (Web3 E-Commerce Marketplace)<a
+              href="https://play.google.com/store/apps/details?id=com.quettaqmarketplaceapp" target="_blank"
+              title="Click over here"
+              style="text-decoration: none; color: inherit; font-size: 9.5pt; font-weight: normal; margin-left: 4px;">[link]</a>
+          </p>
+
+          <ul>
+            <li>Built secure authentication workflows using <strong>JWT</strong>, <strong>OAuth2</strong>, and refresh token mechanisms for persistent
+              user sessions.</li>
+            <li>Implemented deep linking with <strong>Web3 wallet integration</strong> to enable blockchain-based transactions.</li>
+            <li>Developed <strong>foreground service</strong> to maintain socket connections for real-time transaction verification.</li>
+            <li>Used <strong>NativeWind</strong> and <strong>Reanimated</strong> for responsive styling and smooth animations</li>
+          </ul>
+        </div>
+        <!-- EDUCATION -->
+        <div class="section-title">EDUCATION</div>
+        <div class="education-block">
+          <ul>
+            <li>
+              <strong>Smt. Kashibai Navale College of Engineering Pune</strong> –
+              <em>B.E.- Computer Engineering <strong>2020-2024</strong></em>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    const ENABLE_EDIT_MODE = true;
+
+    if (!ENABLE_EDIT_MODE) {
+      const saveBtn = document.getElementById('save-html-btn');
+      if (saveBtn) saveBtn.style.display = 'none';
+    } else {
+      document.querySelector('.page').addEventListener('dblclick', function (e) {
+        const target = e.target;
+        if (['P', 'LI', 'H1', 'DIV', 'STRONG', 'SPAN'].includes(target.tagName)) {
+          target.setAttribute('contenteditable', 'true');
+          target.focus();
+          target.style.outline = '2px dashed #1DB100';
+          target.style.outlineOffset = '2px';
+          target.style.borderRadius = '2px';
+
+          target.addEventListener('blur', function () {
+            target.removeAttribute('contenteditable');
+            target.style.outline = 'none';
+          }, { once: true });
+        }
+      });
+    }
+
+    function saveChanges() {
+      const editables = document.querySelectorAll('[contenteditable]');
+      editables.forEach(el => {
+        el.removeAttribute('contenteditable');
+        el.style.outline = 'none';
+      });
+
+      const htmlContent = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+      const blob = new Blob([htmlContent], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'vaibhav_ugale_full_stack.html';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+  </script>
+
+
+</body>
+
+</html>

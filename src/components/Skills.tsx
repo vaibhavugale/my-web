@@ -77,7 +77,11 @@ const Skills = () => {
         textClassName: "!text-[#000]",
       },
     ],
-    other: ["Problem solving", "Web Designing", "DSA"],
+    other: [
+      "Problem solving", "DSA", "Redux / RTK", "React Hooks", "MUI", "Android", "Webpack", 
+      "Vite", "Jest", "FastAPI", "Redis", "MMKV", "REST API", "LangChain", "LangGraph", 
+      "LangSmith", "WebAuthn", "Git", "CI/CD", "Agile", "Turborepo", "Monorepo", "Figma", "Docker"
+    ],
   };
   return (
     <div
@@ -144,6 +148,19 @@ const Skills = () => {
                   src={skill.icon}
                 />
                 <p>{skill.name}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div>
+          <p className="tracking-wider">Tools & Others</p>
+          <div className="flex flex-wrap gap-2 mt-2">
+            {skills.other.map((skill) => (
+              <div
+                key={skill}
+                className="md-code flex items-center px-3 py-1 bg-gray-100 rounded-full text-sm font-medium"
+              >
+                <p>{skill}</p>
               </div>
             ))}
           </div>

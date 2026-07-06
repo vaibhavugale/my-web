@@ -19,10 +19,10 @@ const Header = () => {
       label: "Blogs",
       route: "#blogs",
     },
-    // {
-    //   label: "Projects",
-    //   route: "#projects",
-    // },
+    {
+      label: "Projects",
+      route: "#projects",
+    },
     // {
     //   label: "Contact",
     //   route: "#contact",
