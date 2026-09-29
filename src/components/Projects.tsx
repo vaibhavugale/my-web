@@ -1,7 +1,6 @@
 import { ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 import RN_Marquee from "../assets/RN_Marquee.jpeg";
 import studyNotion from "../assets/study_notion.png";
-import { cn } from "../utility";
 import { usePagination } from "../hooks/usePagination";
 
 const Projects = () => {

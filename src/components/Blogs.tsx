@@ -4,7 +4,6 @@ import DefaultImage from "../assets/defaultImage.png";
 import TailwindImage from "../assets/tailwind.png";
 import EtagAnd304 from "../assets/etag-304.png";
 import main_thread from "../assets/main_threa_blog.png";
-import { cn } from "../utility";
 import { usePagination } from "../hooks/usePagination";
 
 const Blogs = () => {
