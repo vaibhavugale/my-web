@@ -7,11 +7,10 @@ import { usePagination } from "../hooks/usePagination";
 const Projects = () => {
     const projects = [
         {
-            image: RN_Marquee, // using placeholder image
+            image: RN_Marquee,
             title: "Q2Q (Web3 E-Commerce Marketplace)",
             desc: "Built secure authentication workflows using JWT & OAuth2. Implemented deep linking with Web3 wallet integration for blockchain transactions, real-time socket connections via foreground service, and used NativeWind & Reanimated for styling.",
             link: "https://play.google.com/store/apps/details?id=com.quettaqmarketplaceapp",
-            containerClass: "!border-[#A27E80]  ",
             id: "q2q-web3"
         },
         {
@@ -19,79 +18,48 @@ const Projects = () => {
             title: "Study Notion - A Ed-tech Platform",
             desc: "Study Notion is an innovative ed-tech platform designed to enhance the learning experience for students and teachers alike. It offers a variety of features to facilitate effective teaching and learning.",
             link: "https://juniper-meat-106.notion.site/Animated-Marquee-2b4294793fee800fadebda8035228e6c",
-            containerClass: "!border-[#A27E80]  ",
             id: "study-notion"
         },
-
     ];
 
-    const {
-        currentPage,
-        totalPages,
-        currentData: currentProjects,
-        nextPage,
-        prevPage,
-    } = usePagination({
-        data: projects,
-        itemsPerPage: 4,
-    });
+    const { currentPage, totalPages, currentData, nextPage, prevPage } = usePagination({ data: projects, itemsPerPage: 4 });
 
     return (
-        <div id="projects" className="">
-            <div className=" flex flex-col items-center">
-                <p className="text-2xl  md:text-4xl">Projects</p>
-            </div>
-            <div className=" grid grid-cols-1 md:grid-cols-4 gap-5  mt-[2rem] md:mt-[5rem] grid-rows-auto">
-                {currentProjects?.map((blog) => (
-                    <div
-                        key={blog.id}
-                        id={blog.id}
-                        className={cn(
-                            " border justify-baseline p-3 flex flex-col gap-2  shadow-md  rounded",
-                            blog.containerClass
-                        )}
-                    >
-                        <img
-                            src={blog?.image}
-                            className=" h-30 rounded w-full object-cover"
-                        />
-                        <p className=" text-sm font-semibold tracking-wider">
-                            {blog?.title}
-                        </p>
-                        <p className=" text-sm tracking-wider">{blog?.desc?.substring(0, 150) + "..."}</p>
-                        <a
-                            href={blog.link}
-                            target="_blank"
-                            className=" flex text-blue-300  mt-auto items-center gap-2"
-                        >
-                            Read More <ExternalLink className="w-5 h-5" />
+        <div id="projects" className="pt-10">
+            <h2 className="text-4xl font-black uppercase tracking-tight mb-10">Projects</h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {currentData?.map((blog) => (
+                    <div key={blog.id} className="brutal-card p-6 flex flex-col gap-6 brutal-card-hover group">
+                        <div className="border-2 border-black h-48 md:h-64 overflow-hidden shadow-[2px_2px_0_0_#000]">
+                            <img src={blog?.image} className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500" />
+                        </div>
+                        <div className="flex flex-col gap-3 flex-1">
+                          <h3 className="text-2xl font-black uppercase leading-tight line-clamp-2">{blog?.title}</h3>
+                          <p className="text-gray-800 font-medium line-clamp-3">{blog?.desc}</p>
+                        </div>
+                        <a href={blog.link} target="_blank" className="brutal-btn flex items-center justify-center gap-2 mt-auto !bg-white !text-black hover:!bg-black hover:!text-white w-full">
+                            <span>Read More</span>
+                            <ExternalLink className="w-5 h-5" />
                         </a>
                     </div>
                 ))}
             </div>
+            
             {totalPages > 1 && (
-                <div className="flex justify-center items-center gap-6 mt-10">
-                    <button
-                        onClick={prevPage}
-                        disabled={currentPage === 1}
-                        className="p-2 border rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 disabled:opacity-30 disabled:cursor-not-allowed"
-                    >
-                        <ChevronLeft className="w-5 h-5" />
+                <div className="flex justify-center items-center gap-6 mt-12">
+                    <button onClick={prevPage} disabled={currentPage === 1} className="brutal-btn !p-3 !bg-white disabled:opacity-50 disabled:shadow-none">
+                        <ChevronLeft className="w-6 h-6" />
                     </button>
-                    <span className="text-md font-medium text-gray-700 dark:text-gray-300">
+                    <span className="font-mono font-bold text-lg">
                         Page {currentPage} of {totalPages}
                     </span>
-                    <button
-                        onClick={nextPage}
-                        disabled={currentPage === totalPages}
-                        className="p-2 border rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 disabled:opacity-30 disabled:cursor-not-allowed"
-                    >
-                        <ChevronRight className="w-5 h-5" />
+                    <button onClick={nextPage} disabled={currentPage === totalPages} className="brutal-btn !p-3 !bg-white disabled:opacity-50 disabled:shadow-none">
+                        <ChevronRight className="w-6 h-6" />
                     </button>
                 </div>
             )}
-        </div >
+        </div>
     );
 };
-
 export default Projects;

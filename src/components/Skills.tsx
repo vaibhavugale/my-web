@@ -4,166 +4,72 @@ import TsIcon from "../assets/typeScript.svg";
 import ReactNative from "../assets/testreact.svg";
 import TailwindIcon from "../assets/image.png";
 import NextJsIcon from "../assets/nextjs.svg";
-import { cn } from "../utility";
 import JavaScript from "../assets/javaScript.svg";
 import Express from "../assets/express.svg";
 import Postgres from "../assets/postgresql.svg";
 import MongoDb from "../assets/mongodb.svg";
 import Prisma from "../assets/prisma.png";
-import Android from "../assets/androidstudio.svg";
-import Backend from "../assets/backend.svg";
-import ReactIconW from "../assets/reactWhite.svg";
 
 const Skills = () => {
-  const expertise = [
+  const categories = [
     {
-      label: "Web Development",
-      des: "Building dynamic web apps with React, Next.js, and cutting-edge CSS frameworks for speed and style.",
-      icon: ReactIconW,
+      title: "Frontend",
+      skills: [
+        { name: "React", icon: ReactIcon },
+        { name: "Next.js", icon: NextJsIcon },
+        { name: "React Native", icon: ReactNative },
+        { name: "Tailwind", icon: TailwindIcon },
+        { name: "JavaScript", icon: JavaScript },
+        { name: "TypeScript", icon: TsIcon },
+      ]
     },
     {
-      label: "Android App Development",
-      des: "Developed Android applications using React Native, delivering high-speed and robust APKs for B2B solutions.",
-      icon: Android,
-    },
-    {
-      label: "Backend Development",
-      des: "Building scalable backends with Node.js and Express, powered by flexible SQL and NoSQL database solutions",
-      icon: Backend,
-    },
+      title: "Backend",
+      skills: [
+        { name: "Node.js", icon: NodeJSIcon },
+        { name: "Express", icon: Express },
+        { name: "PostgreSQL", icon: Postgres },
+        { name: "MongoDB", icon: MongoDb },
+        { name: "Prisma", icon: Prisma },
+      ]
+    }
   ];
 
-  const skills = {
-    frontend: [
-      {
-        name: "JavaScript",
-        icon: JavaScript,
-        textClassName: "!text-yellow-400",
-      },
-      { name: "TypeScript", icon: TsIcon, textClassName: "!text-blue-400" },
-      {
-        name: "React JS",
-        icon: ReactIcon,
-        iconClasses: "animate-rotate-360",
-        textClassName: "!text-[#73e5fe]",
-      },
-      {
-        name: "Tailwind CSS",
-        icon: TailwindIcon,
-        iconClasses: "object-contain	",
-        textClassName: "!text-[#37bdf9]",
-      },
-      {
-        name: "React Native",
-        icon: ReactNative,
-        textClassName: "!text-[#73e5fe]",
-      },
-      { name: "Next Js", icon: NextJsIcon, textClassName: "!text-[#000]" },
-    ],
-    backend: [
-      {
-        name: "Node JS",
-        icon: NodeJSIcon,
-        textClassName: "!text-[#000]",
-        iconClasses: "  ",
-      },
-      { name: "Express Js", icon: Express, textClassName: "!text-[#000]" },
-      { name: "PostgresSql", icon: Postgres, textClassName: "!text-[#336791]" },
-      { name: "MongoDB", icon: MongoDb, textClassName: "!text-[#4faa41]" },
-      {
-        name: "Prisma",
-        icon: Prisma,
-        iconClasses: "object-contain	",
-        textClassName: "!text-[#000]",
-      },
-    ],
-    other: [
-      "Problem solving", "DSA", "Redux / RTK", "React Hooks", "MUI", "Android", "Webpack", 
-      "Vite", "Jest", "FastAPI", "Redis", "MMKV", "REST API", "LangChain", "LangGraph", 
-      "LangSmith", "WebAuthn", "Git", "CI/CD", "Agile", "Turborepo", "Monorepo", "Figma", "Docker"
-    ],
-  };
+  const tools = [
+    "Redux", "React Hooks", "REST API", "Git", "CI/CD", 
+    "Vite", "Jest", "Docker", "Figma", "Problem Solving"
+  ];
+
   return (
-    <div
-      id="skills"
-      className="flex md:flex-row flex-col-reverse justify-center   gap-10 md:gap-8  "
-    >
-      <div className="flex-1 flex flex-col gap-8 justify-between">
-        {expertise?.map((item) => {
-          return (
-            <div key={item.label}>
-              <div className="flex gap-4">
-                <div>
-                  <div className="bg-black w-[3rem] h-[3rem] flex justify-center items-center rounded-[30px]">
-                    <img src={item?.icon} className="w-8 h-8 m-auto" />
+    <div id="skills" className="flex flex-col gap-8 pt-10">
+      <h2 className="text-4xl font-black uppercase tracking-tight">My Tech-Stack</h2>
+      
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {categories.map((cat) => (
+          <div key={cat.title} className="brutal-card p-6 md:p-8 flex flex-col gap-6 bg-white">
+            <h3 className="text-2xl font-bold uppercase border-b-2 border-black pb-4">{cat.title}</h3>
+            <div className="grid grid-cols-2 gap-5">
+              {cat.skills.map(skill => (
+                <div key={skill.name} className="flex items-center gap-3">
+                  <div className="w-12 h-12 border-2 border-black flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] bg-white">
+                    <img src={skill.icon} alt={skill.name} className="w-6 h-6 object-contain" />
                   </div>
+                  <span className="font-mono font-bold text-sm uppercase">{skill.name}</span>
                 </div>
-                <div>
-                  <p className=" font-semibold">{item?.label}</p>
-                  <p className="tracking-wider">{item?.des}</p>
-                </div>
-              </div>
+              ))}
             </div>
-          );
-        })}
+          </div>
+        ))}
       </div>
-      <div className="flex-1 flex flex-col gap-8">
-        <div>
-          <p className="tracking-wider ">Skills</p>
-          <p className="text-4xl ">My Tech-Stack</p>
-        </div>
-        <div>
-          <p className="tracking-wider">Frontend</p>
-          <div className="flex flex-wrap gap-1">
-            {skills.frontend.map((skill) => (
-              <div
-                key={skill.name}
-                className={cn(
-                  "md-code flex items-center gap-3",
-                  skill.textClassName
-                )}
-              >
-                <img
-                  className={cn(skill.iconClasses, "w-5 h-5")}
-                  src={skill.icon}
-                />
-                <p>{skill.name}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div>
-          <p className="tracking-wider">Backend</p>
-          <div className="flex flex-wrap gap-1">
-            {skills.backend.map((skill) => (
-              <div
-                key={skill.name}
-                className={cn(
-                  "md-code flex items-center gap-3",
-                  skill.textClassName
-                )}
-              >
-                <img
-                  className={cn("w-5 h-8", skill?.iconClasses)}
-                  src={skill.icon}
-                />
-                <p>{skill.name}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div>
-          <p className="tracking-wider">Tools & Others</p>
-          <div className="flex flex-wrap gap-2 mt-2">
-            {skills.other.map((skill) => (
-              <div
-                key={skill}
-                className="md-code flex items-center px-3 py-1 bg-gray-100 rounded-full text-sm font-medium"
-              >
-                <p>{skill}</p>
-              </div>
-            ))}
-          </div>
+
+      <div className="brutal-card p-6 md:p-8 bg-[#2cd4fe]">
+        <h3 className="text-xl font-bold uppercase mb-6 border-b-2 border-black pb-2 w-fit">Tools & Others</h3>
+        <div className="flex flex-wrap gap-3">
+          {tools.map(tool => (
+            <span key={tool} className="brutal-tag !bg-white hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[4px_4px_0_0_#000] transition-all cursor-default">
+              {tool}
+            </span>
+          ))}
         </div>
       </div>
     </div>

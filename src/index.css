@@ -1,64 +1,47 @@
 @import "tailwindcss";
-@layer base{
-  @apply overflow-hidden
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+@layer base {
+  body {
+    font-family: 'Space Grotesk', sans-serif;
+    background-color: #fafafa;
+    color: #111111;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+  }
+  .font-mono {
+    font-family: 'Space Mono', monospace;
+  }
+  @apply overflow-hidden;
 }
 
 @layer utilities {
-  .md-code {
-    @apply max-w-fit border-2 font-semibold tracking-wider border-slate-200 text-red-600 font-mono rounded px-2 py-1;
+  .brutal-card {
+    @apply border-2 border-black bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-transform duration-200;
   }
+  .brutal-card-hover {
+    @apply hover:translate-y-[-4px] hover:translate-x-[-4px] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)];
+  }
+  .brutal-btn {
+    @apply border-2 border-black bg-black text-white px-6 py-3 font-bold uppercase tracking-wider shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-y-[-2px] hover:translate-x-[-2px] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all;
+  }
+  .brutal-tag {
+    @apply border-2 border-black bg-white px-3 py-1 text-sm font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] font-mono uppercase;
+  }
+  .bg-grid {
+    background-image: radial-gradient(#000000 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-position: 0 0;
+    opacity: 0.05;
+  }
+  
   .no-scrollbar::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
+    display: none;
   }
   .no-scrollbar {
-    -ms-overflow-style: none; /* IE & Edge */
-    scrollbar-width: none; /* Firefox */
-  }
-  .hover-scale {
-    @apply hover:scale-125 transition-transform duration-300
-  }
-  @keyframes slide-in {
-    0% {
-      transform: translateX(100%);
-    }
-    100% {
-      transform: translateX(0);
-    }
-  }
-
-  @keyframes rotate-360 {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
-   @keyframes float {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
-    100% { transform: translateY(0px); }
-  }
-   @keyframes drift {
-    0%   { transform: translate(0, 0); }
-    25%  { transform: translate(10px, -15px); }
-    50%  { transform: translate(-10px, 10px); }
-    75%  { transform: translate(15px, 15px); }
-    100% { transform: translate(0, 0); }
-  }
-
-  .animate-drift {
-    animation: drift linear infinite;
-  }
-
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }P
-
-  .animate-slide-in {
-    animation: slide-in 0.3s ease-out forwards;
-  }
-  .animate-rotate-360 {
-    animation: rotate-360 3s linear infinite;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }

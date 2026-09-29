@@ -1,4 +1,3 @@
-import { useEffect, useRef } from "react";
 import Blogs from "./components/Blogs";
 import Experience from "./components/Experience";
 import Header from "./components/Header";
@@ -6,36 +5,23 @@ import HeroSection from "./components/HeroSection";
 import Skills from "./components/Skills";
 import Footer from "./components/Footer";
 import Projects from "./components/Projects";
-// import Footer from "./components/Footer";
 
 function App() {
-  const blurRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    const move = (e: MouseEvent) => {
-      if (blurRef.current) {
-        blurRef.current.style.transform = `translate(${e.clientX - 80}px, ${
-          e.clientY - 80
-        }px)`;
-      }
-    };
-
-    window.addEventListener("mousemove", move);
-    return () => window.removeEventListener("mousemove", move);
-  }, []);
   return (
-    <div className="no-scrollbar scroll-smooth max-w-[1080px] flex flex-col  gap-[4rem] md:gap-[10rem]   justify-between  overflow-y-scroll  h-[100vh] overflow-hidden  m-auto pt-[2rem] px-[1.3rem] md:px[5rem]">
-      <Header />
-      <HeroSection />
-      <Skills />
-      <Experience />
-      <Blogs />
-      <Projects />
-      <Footer />
-      <div
-        ref={blurRef}
-        className="pointer-events-none -left-10 absolute w-60 h-50 bg-purple-500 rounded-full blur-3xl opacity-40"
-      />
+    <div className="no-scrollbar scroll-smooth w-full flex flex-col overflow-y-scroll h-[100vh] overflow-x-hidden m-auto bg-[#fafafa] relative">
+      <div className="absolute inset-0 bg-grid pointer-events-none z-0"></div>
+      
+      <div className="max-w-[1024px] mx-auto w-full px-4 md:px-8 relative z-10 flex flex-col gap-[6rem] md:gap-[8rem] pb-20">
+        <Header />
+        <HeroSection />
+        <Skills />
+        <Experience />
+        <Projects />
+        <Blogs />
+      </div>
+      <div className="relative z-10">
+        <Footer />
+      </div>
     </div>
   );
 }

@@ -1,157 +1,48 @@
 import { Download } from "lucide-react";
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import profile from "../assets/profilePick.jpeg";
-import ReactIcon from "../assets/react.svg";
-import NodeJSIcon from "../assets/nodejs-original.svg";
-import TsIcon from "../assets/typeScript.svg";
-import ReactNative from "../assets/testreact.svg";
-import TailwindIcon from "../assets/image.png";
-import NextJsIcon from "../assets/nextjs.svg";
-import JavaScript from "../assets/javaScript.svg";
-import Express from "../assets/express.svg";
-import Postgres from "../assets/postgresql.svg";
-import MongoDb from "../assets/mongodb.svg";
-import Prisma from "../assets/prisma.png";
 import Github from "../assets/github.svg";
-import Linkedin from "../assets/linkedin.svg"
-
-gsap.registerPlugin(ScrollTrigger);
+import Linkedin from "../assets/linkedin.svg";
 
 const HeroSection = () => {
-  const iconRefs = useRef<any[]>([]);
-  const containerRef = useRef(null);
-
-  const icons = [
-    ReactIcon,
-    NodeJSIcon,
-    TsIcon,
-    ReactNative,
-    TailwindIcon,
-    NextJsIcon,
-    JavaScript,
-    Express,
-    Postgres,
-    MongoDb,
-    Prisma,
-  ];
-
-  useEffect(() => {
-    // Wait for refs to be populated
-    const timer = setTimeout(() => {
-      if (iconRefs.current.length > 0) {
-        iconRefs.current.forEach((icon, index) => {
-          if (icon) {
-            gsap.fromTo(
-              icon,
-              {
-                opacity: 0.3,
-                scale: 0.8,
-              },
-              {
-                scrollTrigger: {
-                  trigger: "body",
-                  start: "top 80%",
-                  end: "bottom 20%",
-                  scrub: 1,
-                  markers: false,
-                },
-                opacity: 1,
-                scale: 1 + Math.sin(index * 0.5) * 0.4,
-                y: index * 10,
-                rotation: 360,
-                duration: 2,
-                ease: "none",
-              }
-            );
-          }
-        });
-      }
-    }, 100);
-
-    return () => {
-      clearTimeout(timer);
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
-  }, []);
-
   return (
-    <div
-      id="about"
-      ref={containerRef}
-      className=" flex pt-[3rem]  relative flex-col md:px-[5rem] gap-6  items-center justify-center "
-    >
-      <div className=" w-full rounded absolute -top-5 md:-top-30 -z-1 h-[30%] md:h-[50%]  overflow-hidden">
-        {icons?.map((src, i) => {
-          const top = Math.random() * 80;
-          const left = Math.random() * 90;
-          return (
-            <img
-              key={i}
-              ref={(el) => {
-                if (el) iconRefs.current[i] = el;
-              }}
-              src={src}
-              className="w-10 h-10 object-contain absolute"
-              style={{
-                top: `${top}%`,
-                left: `${left}%`,
-              }}
-            />
-          );
-        })}
-      </div>
-      <div className=" flex flex-col  justify-center items-center  gap-1 md:gap-3">
-        <div className="bg-black outline-4 outline-white overflow-hidden w-35 h-35 rounded-full">
-          <img src={profile} loading="lazy" />
+    <div id="about" className="flex flex-col md:flex-row gap-12 md:gap-8 items-center justify-between pt-10 md:pt-20">
+      
+      <div className="flex-1 flex flex-col items-start gap-6 w-full order-2 md:order-1">
+        <div className="brutal-tag inline-block bg-[#FFD700]">
+          Software Engineer
         </div>
-        <div className=" flex gap-3">
-          <p className="text-xl md:text-2xl">Hi! I'm Vaibhav Ugale </p>
-          <div className="flex  gap-3">
-            <a
-              href="https://www.linkedin.com/in/vaibhavugale-959aa2217"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src={Linkedin}
-                className="w-8 h-8 cursor-pointer hover-scale  "
-              />
-            </a>
-            <a
-              href="https://github.com/vaibhavugale"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <img
-                src={Github}
-                className="w-8 h-8 cursor-pointer hover-scale "
-              />
-            </a>
-          </div>
+        
+        <h1 className="text-5xl md:text-7xl font-black uppercase leading-[1.1] tracking-tight">
+          Hi, I'm <br />
+          Vaibhav Ugale.
+        </h1>
+        
+        <p className="text-lg md:text-xl font-medium leading-relaxed max-w-xl text-gray-800">
+          I specialize in building high-performance, visually engaging applications with a focus on user experience. Clean, scalable, and maintainable code is my foundation.
+        </p>
+
+        <div className="flex flex-wrap items-center gap-4 mt-4">
+          <a target="_blank" href={"https://docs.google.com/document/d/1NfRdbtz7irwyIhi8wbRGlUsJDmsvtBk7G7CosLy_OBw/edit?usp=sharing"} download={"vaibhav_ugale"} className="brutal-btn flex items-center gap-3 !bg-[#FF90E8] !text-black hover:!bg-black hover:!text-white">
+            <span>Download CV</span>
+            <Download className="w-5 h-5" />
+          </a>
+          
+          <a href="https://github.com/vaibhavugale" target="_blank" rel="noopener noreferrer" className="brutal-card p-3 brutal-card-hover !bg-white">
+            <img src={Github} className="w-7 h-7" alt="Github" />
+          </a>
+          
+          <a href="https://www.linkedin.com/in/vaibhavugale-959aa2217" target="_blank" rel="noopener noreferrer" className="brutal-card p-3 brutal-card-hover !bg-white">
+            <img src={Linkedin} className="w-7 h-7" alt="LinkedIn" />
+          </a>
         </div>
-        <p className="text-xl md:text-2xl">+91 93701 41891</p>
       </div>
 
-      <p className="text-3xl md:text-6xl  text-center">
-        Software Engineer based in Mumbai, India
-      </p>
-
-      <p className=" md:text-xl tracking-wider md:px-[3rem]  text-center">
-        I specialize in building high-performance, visually engaging
-        applications with a focus on user experience. Clean, scalable, and
-        maintainable code is the foundation of every solution I deliver.
-      </p>
-
-      <div className=" flex items-center  gap-6">
-
-        <a target="_blank" href={"https://docs.google.com/document/d/1NfRdbtz7irwyIhi8wbRGlUsJDmsvtBk7G7CosLy_OBw/edit?usp=sharing"} download={"vaibhav_ugale"} className="bg-black text-white flex gap-4 p-3 px-6 hover:bg-black/70 cursor-pointer rounded-full">
-          <p>Download CV </p>
-          <Download className="w-5 h-5" />
-
-        </a>
+      <div className="flex-1 flex justify-center md:justify-end w-full order-1 md:order-2">
+        <div className="brutal-card w-[280px] h-[350px] md:w-[380px] md:h-[460px] p-2 bg-white rotate-2 hover:rotate-0 transition-transform duration-500">
+          <img src={profile} className="w-full h-full object-cover border-2 border-black filter grayscale hover:grayscale-0 transition-all duration-500" alt="Vaibhav Ugale" />
+        </div>
       </div>
+
     </div>
   );
 };
