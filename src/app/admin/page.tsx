@@ -1,102 +1,137 @@
 "use client";
 
-import { LogOut, LayoutDashboard, FileText, Settings, User } from "lucide-react";
+import { LogOut, LayoutDashboard, FileText, Settings, User, Bell, Search, Activity } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { getBlogs } from "./actions";
 
 export default function AdminDashboard() {
   const router = useRouter();
+  const [blogs, setBlogs] = useState<any[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadBlogs() {
+      const data = await getBlogs();
+      setBlogs(data);
+      setIsLoading(false);
+    }
+    loadBlogs();
+  }, []);
 
   const handleLogout = async () => {
-    // Basic logout logic to clear cookies (You might need an API route for this if httpOnly)
-    // For now we'll route to home page. In a real scenario, call a logout API to clear cookies.
     await fetch("/api/auth/logout", { method: "POST" });
     router.push("/");
     router.refresh();
   };
 
   return (
-    <div className="min-h-screen w-full bg-[#fafafa] text-[#111111] relative overflow-x-hidden selection:bg-yellow-300">
-      <div className="absolute inset-0 bg-grid pointer-events-none z-0"></div>
+    <div className="min-h-screen w-full bg-gray-50 flex text-gray-900 font-sans">
       
-      <div className="relative z-10 flex h-screen max-w-[1400px] mx-auto p-4 md:p-8 gap-8">
+      {/* Sidebar */}
+      <aside className="w-64 bg-white border-r border-gray-200 flex flex-col hidden md:flex h-screen sticky top-0">
+        <div className="p-6 border-b border-gray-100 flex items-center gap-3">
+          <div className="w-8 h-8 bg-indigo-600 text-white rounded-lg flex items-center justify-center font-bold">
+            V
+          </div>
+          <h1 className="font-semibold text-lg tracking-tight">Admin Portal</h1>
+        </div>
         
-        {/* Sidebar */}
-        <div className="w-64 hidden md:flex flex-col gap-8 h-full">
-          <div className="brutal-card p-6 bg-yellow-300">
-            <h1 className="text-2xl font-black uppercase tracking-widest flex items-center gap-2">
-              <LayoutDashboard className="w-6 h-6" /> Admin
-            </h1>
-          </div>
+        <div className="p-4 flex-1 flex flex-col gap-1 overflow-y-auto">
+          <p className="px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2 mt-4">Overview</p>
+          <button className="flex items-center gap-3 px-3 py-2.5 text-sm font-medium rounded-lg bg-indigo-50 text-indigo-700 transition-colors">
+            <LayoutDashboard className="w-5 h-5" /> Dashboard
+          </button>
+          <button 
+            onClick={() => router.push('/admin/blogs/create')}
+            className="flex items-center gap-3 px-3 py-2.5 text-sm font-medium rounded-lg text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors"
+          >
+            <FileText className="w-5 h-5" /> Posts
+          </button>
           
-          <div className="brutal-card bg-white p-4 flex-1 flex flex-col gap-4">
-            <button className="flex items-center gap-3 font-bold uppercase tracking-widest p-4 border-2 border-transparent hover:border-black hover:bg-black hover:text-white transition-all text-left">
-              <LayoutDashboard className="w-5 h-5" /> Dashboard
-            </button>
-            <button className="flex items-center gap-3 font-bold uppercase tracking-widest p-4 border-2 border-transparent hover:border-black hover:bg-black hover:text-white transition-all text-left">
-              <FileText className="w-5 h-5" /> Posts
-            </button>
-            <button className="flex items-center gap-3 font-bold uppercase tracking-widest p-4 border-2 border-transparent hover:border-black hover:bg-black hover:text-white transition-all text-left">
-              <User className="w-5 h-5" /> Profile
-            </button>
-            <button className="flex items-center gap-3 font-bold uppercase tracking-widest p-4 border-2 border-transparent hover:border-black hover:bg-black hover:text-white transition-all text-left">
-              <Settings className="w-5 h-5" /> Settings
-            </button>
-            
-            <div className="mt-auto">
-              <button onClick={handleLogout} className="w-full flex items-center justify-center gap-2 font-bold uppercase tracking-widest p-4 border-2 border-black bg-red-400 shadow-[2px_2px_0_0_#000] hover:translate-y-[-2px] hover:translate-x-[-2px] hover:shadow-[4px_4px_0_0_#000] transition-all">
-                <LogOut className="w-5 h-5" /> Logout
-              </button>
-            </div>
-          </div>
+
         </div>
 
-        {/* Main Content */}
-        <div className="flex-1 flex flex-col gap-8 h-full overflow-y-auto no-scrollbar pb-8">
-          
-          <div className="brutal-card bg-white p-8 flex justify-between items-center">
+        <div className="p-4 border-t border-gray-100">
+          <button 
+            onClick={handleLogout} 
+            className="w-full flex items-center gap-3 px-3 py-2.5 text-sm font-medium rounded-lg text-red-600 hover:bg-red-50 transition-colors"
+          >
+            <LogOut className="w-5 h-5" /> Logout
+          </button>
+        </div>
+      </aside>
+
+      {/* Main Content */}
+      <main className="flex-1 flex flex-col min-h-screen">
+        
+        {/* Top Header */}
+        <header className="bg-white border-b border-gray-200 px-8 py-4 flex items-center justify-between sticky top-0 z-10">
+
+
+          <div className="flex items-center gap-4 ml-auto">
+
+            <div className="flex items-center gap-3 cursor-pointer">
+              <div className="w-9 h-9 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center font-semibold text-sm border border-indigo-200">
+                VU
+              </div>
+              <div className="hidden md:block">
+                <p className="text-sm font-semibold leading-none mb-1">Vaibhav Ugale</p>
+                <p className="text-xs text-gray-500 leading-none">Admin</p>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        {/* Dashboard Content */}
+        <div className="p-8 flex-1">
+          <div className="flex justify-between items-end mb-8">
             <div>
-              <h2 className="text-3xl font-black uppercase tracking-widest mb-2">Welcome, Vaibhav</h2>
-              <p className="font-mono text-sm font-bold text-black/60">System running optimally.</p>
+              <h2 className="text-2xl font-bold text-gray-900 mb-1">Dashboard</h2>
+              <p className="text-sm text-gray-500">Welcome back, here's what's happening today.</p>
             </div>
-            <div className="brutal-tag bg-green-400">Online</div>
+            <button 
+              onClick={() => router.push('/admin/blogs/create')}
+              className="flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-lg hover:bg-indigo-700 transition-colors"
+            >
+              <FileText className="w-4 h-4" />
+              Create New Blog
+            </button>
           </div>
 
-          {/* Stats Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="brutal-card bg-blue-300 p-6 brutal-card-hover">
-              <h3 className="font-bold uppercase tracking-widest text-sm mb-4">Total Views</h3>
-              <p className="text-5xl font-black">12.4k</p>
+          <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+            <div className="px-6 py-5 border-b border-gray-100 bg-gray-50/50">
+              <h3 className="font-semibold text-gray-900">All Blogs</h3>
             </div>
-            <div className="brutal-card bg-purple-300 p-6 brutal-card-hover">
-              <h3 className="font-bold uppercase tracking-widest text-sm mb-4">Blog Posts</h3>
-              <p className="text-5xl font-black">24</p>
-            </div>
-            <div className="brutal-card bg-orange-300 p-6 brutal-card-hover">
-              <h3 className="font-bold uppercase tracking-widest text-sm mb-4">Projects</h3>
-              <p className="text-5xl font-black">12</p>
-            </div>
-          </div>
-
-          {/* Recent Activity */}
-          <div className="brutal-card bg-white p-8 flex-1">
-            <h3 className="text-xl font-black uppercase tracking-widest mb-6 border-b-2 border-black pb-4">Recent Activity</h3>
             
-            <div className="space-y-4">
-              {[
-                { id: 1, action: "Published a new blog post", time: "2 hours ago" },
-                { id: 2, action: "Updated React project", time: "5 hours ago" },
-                { id: 3, action: "Logged in", time: "1 day ago" },
-              ].map((item) => (
-                <div key={item.id} className="flex justify-between items-center p-4 border-2 border-black hover:bg-yellow-300 transition-colors">
-                  <span className="font-bold">{item.action}</span>
-                  <span className="font-mono text-sm">{item.time}</span>
-                </div>
-              ))}
-            </div>
+            {isLoading ? (
+              <div className="p-8 text-center text-gray-500 text-sm">Loading blogs...</div>
+            ) : blogs.length === 0 ? (
+              <div className="p-8 text-center text-gray-500 text-sm">No blogs found. Create your first blog!</div>
+            ) : (
+              <div className="divide-y divide-gray-100">
+                {blogs.map((blog) => (
+                  <div key={blog.id} className="p-6 flex items-center justify-between hover:bg-gray-50/50 transition-colors">
+                    <div>
+                      <p className="font-medium text-gray-900">{blog.title}</p>
+                      <p className="text-sm text-gray-500 mt-1">
+                        {new Date(blog.createdAt).toLocaleDateString()} · {blog.published ? <span className="text-green-600 font-medium">Published</span> : <span className="text-orange-500 font-medium">Draft</span>}
+                      </p>
+                    </div>
+                    <button 
+                      onClick={() => router.push(`/admin/blogs/${blog.id}`)}
+                      className="text-sm font-medium text-indigo-600 hover:text-indigo-700 bg-indigo-50 px-3 py-1.5 rounded-lg"
+                    >
+                      Edit
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
           
         </div>
-      </div>
+      </main>
     </div>
   );
 }

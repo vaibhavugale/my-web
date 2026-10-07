@@ -10,19 +10,28 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@lexical/code": "^0.52.0",
+    "@lexical/link": "^0.52.0",
+    "@lexical/list": "^0.52.0",
+    "@lexical/react": "^0.52.0",
+    "@lexical/rich-text": "^0.52.0",
+    "@lexical/selection": "^0.52.0",
     "@microsoft/clarity": "^1.0.2",
     "@prisma/client": "^5.0.0",
     "@tailwindcss/postcss": "^4.1.11",
     "bcryptjs": "^3.0.3",
     "cookie": "^2.0.1",
+    "formik": "^2.4.9",
     "gsap": "^3.15.0",
     "jose": "^6.2.12",
+    "lexical": "^0.52.0",
     "lucide-react": "^0.539.0",
     "next": "^15.2.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "tailwind-merge": "^3.3.1",
-    "tailwindcss": "^4.1.11"
+    "tailwindcss": "^4.1.11",
+    "yup": "^1.7.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.32.0",
