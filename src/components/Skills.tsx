@@ -1,3 +1,4 @@
+import Image from "next/image";
 import ReactIcon from "../assets/react.svg";
 import NodeJSIcon from "../assets/nodejs-original.svg";
 import TsIcon from "../assets/typeScript.svg";
@@ -52,7 +53,7 @@ const Skills = () => {
               {cat.skills.map(skill => (
                 <div key={skill.name} className="flex items-center gap-3">
                   <div className="w-12 h-12 border-2 border-black flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] bg-white">
-                    <img src={skill.icon} alt={skill.name} className="w-6 h-6 object-contain" />
+                    <Image src={skill.icon} alt={skill.name} className="w-6 h-6 object-contain" />
                   </div>
                   <span className="font-mono font-bold text-sm uppercase">{skill.name}</span>
                 </div>

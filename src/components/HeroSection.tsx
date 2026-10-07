@@ -1,4 +1,5 @@
 import { Download } from "lucide-react";
+import Image from "next/image";
 import profile from "../assets/profilePick.jpeg";
 import Github from "../assets/github.svg";
 import Linkedin from "../assets/linkedin.svg";
@@ -28,18 +29,18 @@ const HeroSection = () => {
           </a>
           
           <a href="https://github.com/vaibhavugale" target="_blank" rel="noopener noreferrer" className="brutal-card p-3 brutal-card-hover !bg-white">
-            <img src={Github} className="w-7 h-7" alt="Github" />
+            <Image src={Github} className="w-7 h-7" alt="Github" />
           </a>
           
           <a href="https://www.linkedin.com/in/vaibhavugale-959aa2217" target="_blank" rel="noopener noreferrer" className="brutal-card p-3 brutal-card-hover !bg-white">
-            <img src={Linkedin} className="w-7 h-7" alt="LinkedIn" />
+            <Image src={Linkedin} className="w-7 h-7" alt="LinkedIn" />
           </a>
         </div>
       </div>
 
       <div className="flex-1 flex justify-center md:justify-end w-full order-1 md:order-2">
         <div className="brutal-card w-[280px] h-[350px] md:w-[380px] md:h-[460px] p-2 bg-white rotate-2 hover:rotate-0 transition-transform duration-500">
-          <img src={profile} className="w-full h-full object-cover border-2 border-black filter grayscale hover:grayscale-0 transition-all duration-500" alt="Vaibhav Ugale" />
+          <Image src={profile} className="w-full h-full object-cover border-2 border-black filter grayscale hover:grayscale-0 transition-all duration-500" alt="Vaibhav Ugale" />
         </div>
       </div>
 

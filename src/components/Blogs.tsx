@@ -1,4 +1,6 @@
+"use client";
 import { ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image";
 import ReactPatterns from "../assets/reactPatterns.png";
 import DefaultImage from "../assets/defaultImage.png";
 import TailwindImage from "../assets/tailwind.png";
@@ -55,7 +57,7 @@ const Blogs = () => {
         {currentData?.map((blog) => (
           <div key={blog.id} className="brutal-card p-6 flex flex-col gap-6 brutal-card-hover group">
             <div className="border-2 border-black h-48 sm:h-56 overflow-hidden shadow-[2px_2px_0_0_#000]">
-              <img src={blog?.image} alt={blog?.title} className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500" />
+              <Image src={blog?.image} alt={blog?.title} className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500" />
             </div>
             <div className="flex flex-col gap-3 flex-1">
               <h3 className="text-2xl font-black uppercase leading-tight line-clamp-2">{blog?.title}</h3>

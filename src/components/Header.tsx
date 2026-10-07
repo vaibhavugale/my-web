@@ -1,3 +1,4 @@
+"use client";
 import { Mail, Menu, X } from "lucide-react";
 import { useState } from "react";
 
