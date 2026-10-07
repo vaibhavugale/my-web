@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { verifyAccessToken } from "./lib/auth";
+import { verifyAccessToken, verifyRefreshToken, signAccessToken } from "./lib/auth";
 
 // Protected routes
 const protectedPaths = ["/api/admin", "/admin"];
@@ -12,19 +12,29 @@ export async function middleware(request: NextRequest) {
 
   if (isProtected) {
     const accessToken = request.cookies.get("accessToken")?.value;
+    const refreshToken = request.cookies.get("refreshToken")?.value;
     const isApiRequest = pathname.startsWith("/api/");
 
-    if (!accessToken) {
-      if (isApiRequest) {
-        return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    let payload = accessToken ? await verifyAccessToken(accessToken) : null;
+    let newAccessToken = null;
+
+    if (!payload && refreshToken) {
+      // Attempt to refresh the session
+      const refreshPayload = await verifyRefreshToken(refreshToken);
+      if (refreshPayload) {
+        const newPayload = { 
+          userId: refreshPayload.userId, 
+          email: refreshPayload.email, 
+          role: refreshPayload.role 
+        };
+        newAccessToken = await signAccessToken(newPayload);
+        payload = newPayload;
       }
-      return NextResponse.redirect(new URL("/login", request.url));
     }
 
-    const payload = await verifyAccessToken(accessToken);
     if (!payload) {
       if (isApiRequest) {
-        return NextResponse.json({ error: "Token expired or invalid" }, { status: 401 });
+        return NextResponse.json({ error: "Unauthorized or Token Expired" }, { status: 401 });
       }
       return NextResponse.redirect(new URL("/login", request.url));
     }
@@ -35,6 +45,28 @@ export async function middleware(request: NextRequest) {
         return NextResponse.json({ error: "Forbidden" }, { status: 403 });
       }
       return NextResponse.redirect(new URL("/login", request.url));
+    }
+
+    if (newAccessToken) {
+      // Update request headers for server actions/components down the line
+      const requestHeaders = new Headers(request.headers);
+      requestHeaders.set("cookie", `accessToken=${newAccessToken}; ${request.headers.get("cookie") || ""}`);
+      
+      const response = NextResponse.next({
+        request: {
+          headers: requestHeaders,
+        },
+      });
+
+      response.cookies.set("accessToken", newAccessToken, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "strict",
+        path: "/",
+        maxAge: 15 * 60, // 15 minutes
+      });
+      
+      return response;
     }
   }
 
