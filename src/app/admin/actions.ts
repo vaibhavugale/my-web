@@ -22,7 +22,7 @@ export async function getBlogs() {
   }
 }
 
-export async function createBlog(data: { title: string; content: string; published: boolean }) {
+export async function createBlog(data: { title: string; content: string; published: boolean, image?: string }) {
   try {
     const cookieStore = await cookies();
     const token = cookieStore.get("accessToken")?.value;
@@ -41,6 +41,7 @@ export async function createBlog(data: { title: string; content: string; publish
         title: data.title,
         content: data.content,
         published: data.published,
+        image: data.image,
         authorId: payload.userId as string,
       }
     });
@@ -64,7 +65,7 @@ export async function getBlog(id: string) {
   }
 }
 
-export async function updateBlog(id: string, data: { title: string; content: string; published: boolean }) {
+export async function updateBlog(id: string, data: { title: string; content: string; published: boolean, image?: string }) {
   try {
     const cookieStore = await cookies();
     const token = cookieStore.get("accessToken")?.value;
@@ -84,6 +85,7 @@ export async function updateBlog(id: string, data: { title: string; content: str
         title: data.title,
         content: data.content,
         published: data.published,
+        image: data.image,
       }
     });
 

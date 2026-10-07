@@ -222,10 +222,19 @@ function Placeholder() {
   return <div className="absolute top-[68px] left-[17px] text-gray-400 pointer-events-none">Write your blog content here...</div>;
 }
 
-export default function LexicalEditor({ onChange, initialContent }: { onChange?: (content: string) => void, initialContent?: string }) {
+export default function LexicalEditor({ 
+  onChange, 
+  initialContent,
+  isReadOnly = false
+}: { 
+  onChange?: (content: string) => void, 
+  initialContent?: string,
+  isReadOnly?: boolean
+}) {
   const initialConfig = {
     namespace: 'BlogEditor',
     theme,
+    editable: !isReadOnly,
     nodes: [
       HeadingNode,
       QuoteNode,
@@ -241,25 +250,25 @@ export default function LexicalEditor({ onChange, initialContent }: { onChange?:
   };
 
   return (
-    <div className="border border-gray-200 rounded-lg overflow-hidden bg-white relative text-gray-900 shadow-sm focus-within:ring-2 focus-within:ring-indigo-500/20 focus-within:border-indigo-500 transition-all">
+    <div className={`border-gray-200 overflow-hidden bg-white relative text-gray-900 transition-all ${isReadOnly ? 'border-none bg-transparent' : 'border rounded-lg shadow-sm focus-within:ring-2 focus-within:ring-indigo-500/20 focus-within:border-indigo-500'}`}>
       <LexicalComposer initialConfig={initialConfig}>
-        <ToolbarPlugin />
+        {!isReadOnly && <ToolbarPlugin />}
         <div className="relative">
           <RichTextPlugin
-            contentEditable={<ContentEditable className="p-4 min-h-[400px] outline-none" />}
-            placeholder={<Placeholder />}
+            contentEditable={<ContentEditable className={`outline-none ${isReadOnly ? 'p-0 min-h-0' : 'p-4 min-h-[400px]'}`} />}
+            placeholder={!isReadOnly ? <Placeholder /> : null}
             ErrorBoundary={LexicalErrorBoundary}
           />
-          <HistoryPlugin />
-          <AutoFocusPlugin />
+          {!isReadOnly && <HistoryPlugin />}
+          {!isReadOnly && <AutoFocusPlugin />}
           <ListPlugin />
           <LinkPlugin />
           <MarkdownShortcutPlugin />
-          <OnChangePlugin onChange={(editorState) => {
+          {!isReadOnly && <OnChangePlugin onChange={(editorState) => {
             if (onChange) {
               onChange(JSON.stringify(editorState.toJSON()));
             }
-          }} />
+          }} />}
         </div>
       </LexicalComposer>
     </div>

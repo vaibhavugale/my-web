@@ -8,6 +8,7 @@ import { useParams, useRouter } from "next/navigation";
 import { getBlog, updateBlog } from "../../actions";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { Image as ImageIcon } from "lucide-react";
 
 export default function EditBlogPage() {
   const [loading, setLoading] = useState(false);
@@ -20,6 +21,7 @@ export default function EditBlogPage() {
     initialValues: {
       title: "",
       content: "",
+      image: "",
     },
     enableReinitialize: true,
     validationSchema: Yup.object({
@@ -55,6 +57,7 @@ export default function EditBlogPage() {
           formik.setValues({
             title: blog.title,
             content: blog.content,
+            image: blog.image || "",
           });
         }
         setInitialLoading(false);
@@ -79,6 +82,7 @@ export default function EditBlogPage() {
       title: formik.values.title,
       content: formik.values.content,
       published,
+      image: formik.values.image,
     });
     
     setLoading(false);
@@ -147,6 +151,60 @@ export default function EditBlogPage() {
             {formik.touched.title && formik.errors.title ? (
               <div className="text-red-500 text-sm font-medium">{formik.errors.title}</div>
             ) : null}
+          </div>
+
+          <div className="flex flex-col gap-2">
+            <label className="text-sm font-bold uppercase tracking-wider text-gray-500 flex items-center gap-2">
+              <ImageIcon className="w-4 h-4" /> Banner Image
+            </label>
+            {formik.values.image ? (
+              <div className="relative group rounded overflow-hidden border border-gray-200">
+                <img src={formik.values.image} alt="Banner" className="w-full h-48 object-cover" />
+                <button 
+                  type="button" 
+                  onClick={() => formik.setFieldValue("image", "")}
+                  className="absolute top-2 right-2 bg-black text-white px-3 py-1 rounded text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity"
+                >
+                  Remove
+                </button>
+              </div>
+            ) : (
+              <div className="border-2 border-dashed border-gray-300 rounded-lg p-8 flex flex-col items-center justify-center bg-gray-50">
+                <input 
+                  type="file" 
+                  accept="image/*"
+                  onChange={async (e) => {
+                    const file = e.target.files?.[0];
+                    if (file) {
+                      setLoading(true);
+                      const formData = new FormData();
+                      formData.append("file", file);
+                      try {
+                        const res = await fetch("/api/upload", {
+                          method: "POST",
+                          body: formData
+                        });
+                        const data = await res.json();
+                        if (data.url) {
+                          formik.setFieldValue("image", data.url);
+                        } else {
+                          alert("Upload failed");
+                        }
+                      } catch (err) {
+                        alert("Upload failed");
+                      }
+                      setLoading(false);
+                    }
+                  }}
+                  className="hidden" 
+                  id="banner-upload"
+                />
+                <label htmlFor="banner-upload" className="cursor-pointer brutal-btn !bg-white !text-black hover:!bg-black hover:!text-white border-2 border-black px-6 py-2">
+                  Upload Image
+                </label>
+                <p className="text-xs text-gray-500 mt-3 font-medium">JPEG, PNG, WEBP (Max 5MB)</p>
+              </div>
+            )}
           </div>
 
           <div className="flex-1 flex flex-col relative">

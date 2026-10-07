@@ -258,8 +258,14 @@
   .top-0 {
     top: 0px;
   }
+  .top-2 {
+    top: calc(var(--spacing) * 2);
+  }
   .top-\[68px\] {
     top: 68px;
+  }
+  .right-2 {
+    right: calc(var(--spacing) * 2);
   }
   .bottom-6 {
     bottom: calc(var(--spacing) * 6);
@@ -297,6 +303,9 @@
   .my-4 {
     margin-block: calc(var(--spacing) * 4);
   }
+  .my-6 {
+    margin-block: calc(var(--spacing) * 6);
+  }
   .mt-1 {
     margin-top: var(--spacing);
   }
@@ -314,6 +323,9 @@
   }
   .mt-6 {
     margin-top: calc(var(--spacing) * 6);
+  }
+  .mt-10 {
+    margin-top: calc(var(--spacing) * 10);
   }
   .mt-12 {
     margin-top: calc(var(--spacing) * 12);
@@ -384,6 +396,9 @@
   .inline-block {
     display: inline-block;
   }
+  .inline-flex {
+    display: inline-flex;
+  }
   .h-4 {
     height: calc(var(--spacing) * 4);
   }
@@ -411,6 +426,9 @@
   .h-\[100vh\] {
     height: 100vh;
   }
+  .h-\[300px\] {
+    height: 300px;
+  }
   .h-\[350px\] {
     height: 350px;
   }
@@ -419,6 +437,9 @@
   }
   .h-screen {
     height: 100vh;
+  }
+  .min-h-0 {
+    min-height: 0px;
   }
   .min-h-\[400px\] {
     min-height: 400px;
@@ -470,6 +491,9 @@
   }
   .max-w-md {
     max-width: var(--container-md);
+  }
+  .max-w-none {
+    max-width: none;
   }
   .max-w-xl {
     max-width: var(--container-xl);
@@ -557,6 +581,9 @@
   }
   .gap-12 {
     gap: calc(var(--spacing) * 12);
+  }
+  .gap-\[3rem\] {
+    gap: 3rem;
   }
   .gap-\[6rem\] {
     gap: 6rem;
@@ -657,6 +684,10 @@
   .border-l-4 {
     border-left-style: var(--tw-border-style);
     border-left-width: 4px;
+  }
+  .border-dashed {
+    --tw-border-style: dashed;
+    border-style: dashed;
   }
   .border-none {
     --tw-border-style: none;
@@ -760,6 +791,9 @@
   }
   .\!p-3 {
     padding: calc(var(--spacing) * 3) !important;
+  }
+  .p-0 {
+    padding: 0px;
   }
   .p-1 {
     padding: var(--spacing);
@@ -1021,6 +1055,12 @@
   .underline-offset-8 {
     text-underline-offset: 8px;
   }
+  .opacity-0 {
+    opacity: 0%;
+  }
+  .opacity-50 {
+    opacity: 50%;
+  }
   .shadow {
     --tw-shadow: 0 1px 3px 0 var(--tw-shadow-color, rgb(0 0 0 / 0.1)), 0 1px 2px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
@@ -1035,6 +1075,10 @@
   }
   .shadow-\[2px_2px_0px_0px_rgba\(0\,0\,0\,1\)\] {
     --tw-shadow: 2px 2px 0px 0px var(--tw-shadow-color, rgba(0,0,0,1));
+    box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
+  }
+  .shadow-\[4px_4px_0_0_\#000\] {
+    --tw-shadow: 4px 4px 0 0 var(--tw-shadow-color, #000);
     box-shadow: var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
   }
   .shadow-\[4px_4px_0px_0px_rgba\(0\,0\,0\,1\)\] {
@@ -1084,6 +1128,11 @@
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
     transition-duration: var(--tw-duration, var(--default-transition-duration));
   }
+  .transition-opacity {
+    transition-property: opacity;
+    transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
+    transition-duration: var(--tw-duration, var(--default-transition-duration));
+  }
   .transition-transform {
     transition-property: transform, translate, scale, rotate;
     transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
@@ -1098,6 +1147,9 @@
     outline-style: none;
   }
   @media (hover: hover) {
+    .group-hover\:opacity-100:is(:where(.group):hover *) {
+      opacity: 100%;
+    }
     .group-hover\:grayscale-0:is(:where(.group):hover *) {
       --tw-grayscale: grayscale(0%);
       filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
@@ -1255,6 +1307,9 @@
     }
     .md\:h-64 {
       height: calc(var(--spacing) * 64);
+    }
+    .md\:h-\[400px\] {
+      height: 400px;
     }
     .md\:h-\[460px\] {
       height: 460px;
