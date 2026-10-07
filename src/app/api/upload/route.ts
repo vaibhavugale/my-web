@@ -2,16 +2,15 @@ import { NextResponse } from 'next/server';
 import { v2 as cloudinary } from 'cloudinary';
 import { PrismaClient } from '@prisma/client';
 
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-});
-
 const prisma = new PrismaClient();
 
 export async function POST(request: Request) {
   try {
+    cloudinary.config({
+      cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+      api_key: process.env.CLOUDINARY_API_KEY,
+      api_secret: process.env.CLOUDINARY_API_SECRET,
+    });
     if (!process.env.CLOUDINARY_CLOUD_NAME || !process.env.CLOUDINARY_API_KEY || !process.env.CLOUDINARY_API_SECRET) {
       console.error("Cloudinary config missing:", {
         cloud_name: !!process.env.CLOUDINARY_CLOUD_NAME,

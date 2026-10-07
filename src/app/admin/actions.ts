@@ -2,7 +2,9 @@
 
 import { prisma } from "../../lib/prisma";
 import { cookies } from "next/headers";
+import { revalidatePath } from "next/cache";
 import { verifyAccessToken } from "../../lib/auth";
+import { v2 as cloudinary } from 'cloudinary';
 
 export async function getBlogs() {
   try {
@@ -46,6 +48,7 @@ export async function createBlog(data: { title: string; content: string; publish
       }
     });
 
+    revalidatePath("/");
     return { success: true, blogId: blog.id };
   } catch (error) {
     console.error("Failed to create blog", error);
@@ -89,9 +92,48 @@ export async function updateBlog(id: string, data: { title: string; content: str
       }
     });
 
+    revalidatePath("/");
     return { success: true, blogId: blog.id };
   } catch (error) {
     console.error("Failed to update blog", error);
     return { success: false, error: "Failed to update blog" };
+  }
+}
+
+export async function deleteMediaByUrl(url: string) {
+  try {
+    const cookieStore = await cookies();
+    const token = cookieStore.get("accessToken")?.value;
+    
+    if (!token) {
+      throw new Error("Unauthorized");
+    }
+
+    const payload = await verifyAccessToken(token);
+    if (!payload || !payload.userId) {
+      throw new Error("Unauthorized");
+    }
+
+    const media = await prisma.media.findFirst({
+      where: { url }
+    });
+
+    if (media && media.publicId) {
+      cloudinary.config({
+        cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+        api_key: process.env.CLOUDINARY_API_KEY,
+        api_secret: process.env.CLOUDINARY_API_SECRET,
+      });
+
+      await cloudinary.uploader.destroy(media.publicId);
+      await prisma.media.delete({
+        where: { id: media.id }
+      });
+    }
+
+    return { success: true };
+  } catch (error) {
+    console.error("Failed to delete media", error);
+    return { success: false, error: "Failed to delete media" };
   }
 }

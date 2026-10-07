@@ -42,19 +42,17 @@ const Skills = () => {
   ];
 
   return (
-    <div id="skills" className="flex flex-col gap-8 pt-10">
+    <div id="skills" className="flex flex-col gap-10 pt-10">
       <h2 className="text-4xl font-black uppercase tracking-tight">My Tech-Stack</h2>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {categories.map((cat) => (
           <div key={cat.title} className="brutal-card p-6 md:p-8 flex flex-col gap-6 bg-white">
             <h3 className="text-2xl font-bold uppercase border-b-2 border-black pb-4">{cat.title}</h3>
-            <div className="grid grid-cols-2 gap-5">
+            <div className="flex flex-wrap gap-4">
               {cat.skills.map(skill => (
-                <div key={skill.name} className="flex items-center gap-3">
-                  <div className="w-12 h-12 border-2 border-black flex items-center justify-center shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] bg-white">
-                    <Image src={skill.icon} alt={skill.name} className="w-6 h-6 object-contain" />
-                  </div>
+                <div key={skill.name} className="flex items-center gap-2 border-2 border-black px-3 py-2 bg-white shadow-[2px_2px_0_0_#000] hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[4px_4px_0_0_#000] transition-all cursor-default">
+                  <Image src={skill.icon} alt={skill.name} className="w-5 h-5 object-contain" />
                   <span className="font-mono font-bold text-sm uppercase">{skill.name}</span>
                 </div>
               ))}
@@ -63,11 +61,11 @@ const Skills = () => {
         ))}
       </div>
 
-      <div className="brutal-card p-6 md:p-8 bg-[#2cd4fe]">
-        <h3 className="text-xl font-bold uppercase mb-6 border-b-2 border-black pb-2 w-fit">Tools & Others</h3>
+      <div className="brutal-card p-6 md:p-8 bg-white">
+        <h3 className="text-2xl font-bold uppercase border-b-2 border-black pb-4 mb-6">Tools & Others</h3>
         <div className="flex flex-wrap gap-3">
           {tools.map(tool => (
-            <span key={tool} className="brutal-tag !bg-white hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[4px_4px_0_0_#000] transition-all cursor-default">
+            <span key={tool} className="brutal-tag !bg-[#FFD700] hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[4px_4px_0_0_#000] transition-all cursor-default">
               {tool}
             </span>
           ))}

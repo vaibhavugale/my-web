@@ -8,8 +8,9 @@ import Footer from "../../../components/Footer";
 import Image from "next/image";
 import DefaultImage from "../../../assets/defaultImage.png";
 
-export default async function BlogDetailsPage({ params }: { params: { id: string } }) {
-  const blog = await getBlogById(params.id);
+export default async function BlogDetailsPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const blog = await getBlogById(id);
 
   if (!blog || !blog.published) {
     notFound();

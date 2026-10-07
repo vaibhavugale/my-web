@@ -30,7 +30,7 @@ const theme = {
     code: 'bg-gray-100 font-mono text-sm px-1 py-0.5 rounded text-indigo-600',
     highlight: 'bg-yellow-200',
   },
-  code: 'bg-gray-900 text-gray-50 font-mono text-sm p-4 rounded-md block overflow-x-auto my-4',
+  code: 'bg-gray-900 text-gray-50 font-mono text-sm p-4 rounded-md block overflow-x-auto my-4 whitespace-pre-wrap',
   heading: {
     h1: 'text-4xl font-bold mt-6 mb-4',
     h2: 'text-3xl font-bold mt-5 mb-3',

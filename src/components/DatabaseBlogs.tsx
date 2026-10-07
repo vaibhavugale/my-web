@@ -20,13 +20,13 @@ export default function DatabaseBlogs({ blogs }: { blogs: DBBlog[] }) {
   }
 
   return (
-    <div id="latest-blogs" className="pt-10">
+    <div id="blogs" className="pt-10">
       <h2 className="text-4xl font-black uppercase tracking-tight mb-10">Latest Writings</h2>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {currentData?.map((blog) => (
           <div key={blog.id} className="brutal-card p-6 flex flex-col gap-6 brutal-card-hover group">
-            <div className="border-2 border-black h-48 sm:h-56 overflow-hidden shadow-[2px_2px_0_0_#000] relative bg-gray-100 flex items-center justify-center">
+            <div className="border-2 border-black h-48 sm:h-56 overflow-hidden relative bg-gray-100 flex items-center justify-center">
               {blog.image ? (
                 <img src={blog.image} alt={blog.title} className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500" />
               ) : (
@@ -39,7 +39,7 @@ export default function DatabaseBlogs({ blogs }: { blogs: DBBlog[] }) {
               </p>
               <h3 className="text-2xl font-black uppercase leading-tight line-clamp-2">{blog.title}</h3>
             </div>
-            <Link href={`/blogs/${blog.id}`} className="brutal-btn flex items-center justify-center gap-2 mt-auto !bg-white !text-black hover:!bg-black hover:!text-white w-full">
+            <Link href={`/blogs/${blog.id}`} className="brutal-btn flex items-center justify-center gap-2 mt-auto">
               <span>Read Post</span>
               <BookOpen className="w-5 h-5" />
             </Link>

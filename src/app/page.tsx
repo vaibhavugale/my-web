@@ -15,7 +15,7 @@ export default async function Home() {
     <div className="no-scrollbar scroll-smooth w-full flex flex-col overflow-y-scroll h-[100vh] overflow-x-hidden m-auto bg-[#fafafa] relative">
       <div className="absolute inset-0 bg-grid pointer-events-none z-0"></div>
       
-      <div className="max-w-[1024px] mx-auto w-full px-4 md:px-8 relative z-10 flex flex-col gap-[6rem] md:gap-[8rem] pb-20">
+      <div className="max-w-[1024px] mx-auto w-full px-4 md:px-8 relative z-10 flex flex-col gap-16 md:gap-24 pb-20">
         <Header />
         <HeroSection />
         <Skills />

@@ -32,14 +32,14 @@ const Projects = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {currentData?.map((blog) => (
                     <div key={blog.id} className="brutal-card p-6 flex flex-col gap-6 brutal-card-hover group">
-                        <div className="border-2 border-black h-48 md:h-64 overflow-hidden shadow-[2px_2px_0_0_#000]">
+                        <div className="border-2 border-black h-48 md:h-64 overflow-hidden relative">
                             <Image src={blog?.image} alt="Project Image" className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500" />
                         </div>
                         <div className="flex flex-col gap-3 flex-1">
                           <h3 className="text-2xl font-black uppercase leading-tight line-clamp-2">{blog?.title}</h3>
                           <p className="text-gray-800 font-medium line-clamp-3">{blog?.desc}</p>
                         </div>
-                        <a href={blog.link} target="_blank" className="brutal-btn flex items-center justify-center gap-2 mt-auto !bg-white !text-black hover:!bg-black hover:!text-white w-full">
+                        <a href={blog.link} target="_blank" className="brutal-btn flex items-center justify-center gap-2 mt-auto">
                             <span>Read More</span>
                             <ExternalLink className="w-5 h-5" />
                         </a>

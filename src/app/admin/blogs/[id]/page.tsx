@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import LexicalEditor from "../../../../components/LexicalEditor";
 import { useParams, useRouter } from "next/navigation";
-import { getBlog, updateBlog } from "../../actions";
+import { getBlog, updateBlog, deleteMediaByUrl } from "../../actions";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Image as ImageIcon } from "lucide-react";
@@ -162,7 +162,13 @@ export default function EditBlogPage() {
                 <img src={formik.values.image} alt="Banner" className="w-full h-48 object-cover" />
                 <button 
                   type="button" 
-                  onClick={() => formik.setFieldValue("image", "")}
+                  onClick={async () => {
+                    const currentImage = formik.values.image;
+                    formik.setFieldValue("image", "");
+                    if (currentImage) {
+                      await deleteMediaByUrl(currentImage);
+                    }
+                  }}
                   className="absolute top-2 right-2 bg-black text-white px-3 py-1 rounded text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity"
                 >
                   Remove

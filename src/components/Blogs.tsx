@@ -50,7 +50,7 @@ const Blogs = () => {
   const { currentPage, totalPages, currentData, nextPage, prevPage } = usePagination({ data: blogs, itemsPerPage: 4 });
 
   return (
-    <div id="blogs" className="pt-10">
+    <div id="featured-blogs" className="pt-10">
       <h2 className="text-4xl font-black uppercase tracking-tight mb-10">Featured Blogs</h2>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
