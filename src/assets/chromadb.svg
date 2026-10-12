@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <rect width="128" height="128" rx="28" fill="#F8FAFC"/>
+  <!-- Multi-colored vector dots forming Chroma's iconic logo style -->
+  <circle cx="44" cy="48" r="16" fill="#F97316"/>
+  <circle cx="84" cy="48" r="16" fill="#EF4444"/>
+  <circle cx="64" cy="84" r="16" fill="#3B82F6"/>
+  <!-- Intersecting vector wave / connectors -->
+  <path d="M44 48 L84 48 L64 84 Z" fill="none" stroke="#E2E8F0" stroke-width="4" stroke-dasharray="4 4"/>
+</svg>
