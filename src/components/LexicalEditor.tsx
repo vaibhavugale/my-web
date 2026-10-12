@@ -28,8 +28,8 @@ const theme = {
     underline: 'underline',
     strikethrough: 'line-through',
     underlineStrikethrough: 'underline line-through',
-    code: 'bg-gray-100 text-indigo-600 font-mono text-sm px-1.5 py-0.5 rounded-md',
-    highlight: 'bg-yellow-200 border-2 border-black px-1',
+    code: 'bg-[#f1f1ef] text-[#eb5757] font-mono text-sm px-1.5 py-0.5 rounded',
+    highlight: 'bg-[#fbf3db] text-[#37352f] px-1 rounded',
   },
   code: 'bg-gray-50 border border-gray-200 text-gray-800 font-mono text-sm p-4 rounded-lg block overflow-x-auto my-4 whitespace-pre-wrap',
   codeHighlight: {

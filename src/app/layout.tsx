@@ -1,22 +1,21 @@
 import type { Metadata } from "next";
-import { Roboto, Roboto_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "../index.css";
 import ClarityInit from "../components/ClarityInit";
 
-const roboto = Roboto({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "700", "900"],
-  variable: "--font-roboto",
+  variable: "--font-inter",
 });
 
-const robotoMono = Roboto_Mono({
+const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
-  variable: "--font-roboto-mono",
+  variable: "--font-jetbrains-mono",
 });
 
 export const metadata: Metadata = {
-  title: "ugalevaibhav00@gmail.com",
-  description: "Portfolio of Vaibhav Ugale",
+  title: "Vaibhav Ugale — Software Engineer",
+  description: "Portfolio of Vaibhav Ugale, Software Engineer specializing in scalable web & mobile apps.",
 };
 
 export default function RootLayout({
@@ -25,8 +24,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${roboto.variable} ${robotoMono.variable} font-sans antialiased`}>
+    <html lang="en" className="scroll-smooth">
+      <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased text-[#2f3437] bg-white`}>
         <ClarityInit />
         {children}
       </body>

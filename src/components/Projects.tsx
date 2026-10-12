@@ -26,37 +26,57 @@ const Projects = () => {
     const { currentPage, totalPages, currentData, nextPage, prevPage } = usePagination({ data: projects, itemsPerPage: 4 });
 
     return (
-        <div id="projects" className="pt-10">
-            <h2 className="text-4xl font-black uppercase tracking-tight mb-10">Projects</h2>
+        <div id="projects" className="flex flex-col gap-6 pt-4">
+            <div className="flex items-center gap-2 border-b border-[#ececeb] pb-3">
+                <span className="text-xl">🚀</span>
+                <h2 className="text-2xl font-bold tracking-tight text-[#37352f]">Selected Projects</h2>
+            </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 {currentData?.map((blog) => (
-                    <div key={blog.id} className="brutal-card p-6 flex flex-col gap-6 brutal-card-hover group">
-                        <div className="border-2 border-black h-48 md:h-64 overflow-hidden relative">
-                            <Image src={blog?.image} alt="Project Image" className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500" />
+                    <div key={blog.id} className="brutal-card p-4 flex flex-col gap-4 brutal-card-hover group">
+                        <div className="h-44 md:h-52 overflow-hidden rounded-md border border-[#e9e9e7] relative bg-[#f7f6f5]">
+                            <Image 
+                                src={blog?.image} 
+                                alt={blog?.title} 
+                                className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300" 
+                            />
                         </div>
-                        <div className="flex flex-col gap-3 flex-1">
-                          <h3 className="text-2xl font-black uppercase leading-tight line-clamp-2">{blog?.title}</h3>
-                          <p className="text-gray-800 font-medium line-clamp-3">{blog?.desc}</p>
+                        <div className="flex flex-col gap-2 flex-1">
+                          <h3 className="text-base font-semibold text-[#37352f] leading-snug line-clamp-1">{blog?.title}</h3>
+                          <p className="text-xs text-[#5a5853] leading-relaxed line-clamp-3">{blog?.desc}</p>
                         </div>
-                        <a href={blog.link} target="_blank" className="brutal-btn flex items-center justify-center gap-2 mt-auto">
-                            <span>Read More</span>
-                            <ExternalLink className="w-5 h-5" />
+                        <a 
+                            href={blog.link} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="brutal-btn flex items-center justify-center gap-1.5 mt-auto w-full text-xs font-medium"
+                        >
+                            <span>Open Project</span>
+                            <ExternalLink className="w-3.5 h-3.5 text-[#787774]" />
                         </a>
                     </div>
                 ))}
             </div>
             
             {totalPages > 1 && (
-                <div className="flex justify-center items-center gap-6 mt-12">
-                    <button onClick={prevPage} disabled={currentPage === 1} className="brutal-btn !p-3 !bg-white disabled:opacity-50 disabled:shadow-none">
-                        <ChevronLeft className="w-6 h-6" />
+                <div className="flex justify-center items-center gap-4 mt-6">
+                    <button 
+                        onClick={prevPage} 
+                        disabled={currentPage === 1} 
+                        className="brutal-btn !p-2 disabled:opacity-40"
+                    >
+                        <ChevronLeft className="w-4 h-4" />
                     </button>
-                    <span className="font-mono font-bold text-lg">
-                        Page {currentPage} of {totalPages}
+                    <span className="font-mono text-xs text-[#787774]">
+                        {currentPage} / {totalPages}
                     </span>
-                    <button onClick={nextPage} disabled={currentPage === totalPages} className="brutal-btn !p-3 !bg-white disabled:opacity-50 disabled:shadow-none">
-                        <ChevronRight className="w-6 h-6" />
+                    <button 
+                        onClick={nextPage} 
+                        disabled={currentPage === totalPages} 
+                        className="brutal-btn !p-2 disabled:opacity-40"
+                    >
+                        <ChevronRight className="w-4 h-4" />
                     </button>
                 </div>
             )}

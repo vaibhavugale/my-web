@@ -20,43 +20,46 @@ export default function DatabaseBlogs({ blogs }: { blogs: DBBlog[] }) {
   }
 
   return (
-    <div id="blogs" className="pt-10">
-      <h2 className="text-4xl font-black uppercase tracking-tight mb-10">Latest Writings</h2>
+    <div id="blogs" className="flex flex-col gap-6 pt-4">
+      <div className="flex items-center gap-2 border-b border-[#ececeb] pb-3">
+        <span className="text-xl">✍️</span>
+        <h2 className="text-2xl font-bold tracking-tight text-[#37352f]">Latest Articles</h2>
+      </div>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         {currentData?.map((blog) => (
-          <div key={blog.id} className="brutal-card p-6 flex flex-col gap-6 brutal-card-hover group">
-            <div className="border-2 border-black h-48 sm:h-56 overflow-hidden relative bg-gray-100 flex items-center justify-center">
+          <div key={blog.id} className="brutal-card p-4 flex flex-col gap-4 brutal-card-hover group">
+            <div className="h-44 md:h-52 overflow-hidden rounded-md border border-[#e9e9e7] relative bg-[#f7f6f5] flex items-center justify-center">
               {blog.image ? (
-                <img src={blog.image} alt={blog.title} className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500" />
+                <img src={blog.image} alt={blog.title} className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300" />
               ) : (
-                <Image src={DefaultImage} alt={blog.title} className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-500 opacity-50" />
+                <Image src={DefaultImage} alt={blog.title} className="w-full h-full object-cover opacity-70 group-hover:scale-[1.02] transition-transform duration-300" />
               )}
             </div>
-            <div className="flex flex-col gap-3 flex-1">
-              <p className="text-sm font-bold text-gray-500 font-mono">
+            <div className="flex flex-col gap-2 flex-1">
+              <span className="text-xs font-mono text-[#787774]">
                 {new Date(blog.createdAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
-              </p>
-              <h3 className="text-2xl font-black uppercase leading-tight line-clamp-2">{blog.title}</h3>
+              </span>
+              <h3 className="text-base font-semibold text-[#37352f] leading-snug line-clamp-2">{blog.title}</h3>
             </div>
-            <Link href={`/blogs/${blog.id}`} className="brutal-btn flex items-center justify-center gap-2 mt-auto">
+            <Link href={`/blogs/${blog.id}`} className="brutal-btn flex items-center justify-center gap-1.5 mt-auto w-full text-xs font-medium">
               <span>Read Post</span>
-              <BookOpen className="w-5 h-5" />
+              <BookOpen className="w-3.5 h-3.5 text-[#787774]" />
             </Link>
           </div>
         ))}
       </div>
 
       {totalPages > 1 && (
-        <div className="flex justify-center items-center gap-6 mt-12">
-          <button onClick={prevPage} disabled={currentPage === 1} className="brutal-btn !p-3 !bg-white disabled:opacity-50 disabled:shadow-none">
-            <ChevronLeft className="w-6 h-6" />
+        <div className="flex justify-center items-center gap-4 mt-6">
+          <button onClick={prevPage} disabled={currentPage === 1} className="brutal-btn !p-2 disabled:opacity-40">
+            <ChevronLeft className="w-4 h-4" />
           </button>
-          <span className="font-mono font-bold text-lg">
-            Page {currentPage} of {totalPages}
+          <span className="font-mono text-xs text-[#787774]">
+            {currentPage} / {totalPages}
           </span>
-          <button onClick={nextPage} disabled={currentPage === totalPages} className="brutal-btn !p-3 !bg-white disabled:opacity-50 disabled:shadow-none">
-            <ChevronRight className="w-6 h-6" />
+          <button onClick={nextPage} disabled={currentPage === totalPages} className="brutal-btn !p-2 disabled:opacity-40">
+            <ChevronRight className="w-4 h-4" />
           </button>
         </div>
       )}

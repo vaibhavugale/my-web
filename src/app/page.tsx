@@ -12,10 +12,8 @@ export default async function Home() {
   const publishedBlogs = await getPublishedBlogs();
 
   return (
-    <div className="no-scrollbar scroll-smooth w-full flex flex-col overflow-y-scroll h-[100vh] overflow-x-hidden m-auto bg-[#fafafa] relative">
-      <div className="absolute inset-0 bg-grid pointer-events-none z-0"></div>
-      
-      <div className="max-w-[1024px] mx-auto w-full px-4 md:px-8 relative z-10 flex flex-col gap-16 md:gap-24 pb-20">
+    <div className="no-scrollbar scroll-smooth w-full flex flex-col min-h-screen bg-white">
+      <div className="max-w-[860px] mx-auto w-full px-5 md:px-8 flex flex-col gap-12 md:gap-16 pb-16 flex-1">
         <Header />
         <HeroSection />
         <Skills />
@@ -24,9 +22,7 @@ export default async function Home() {
         <DatabaseBlogs blogs={publishedBlogs} />
         <Blogs />
       </div>
-      <div className="relative z-10">
-        <Footer />
-      </div>
+      <Footer />
     </div>
   );
 }
