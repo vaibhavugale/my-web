@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <defs>
+    <linearGradient id="turbo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0096FF"/>
+      <stop offset="100%" stop-color="#FF1E56"/>
+    </linearGradient>
+  </defs>
+  <rect width="128" height="128" rx="28" fill="#000000"/>
+  <path fill="url(#turbo-grad)" d="M64 24C41.9 24 24 41.9 24 64s17.9 40 40 40 40-17.9 40-40-17.9-40-40-40zm0 62c-12.1 0-22-9.9-22-22s9.9-22 22-22 22 9.9 22 22-9.9 22-22 22z"/>
+  <circle cx="64" cy="64" r="10" fill="#ffffff"/>
+</svg>
