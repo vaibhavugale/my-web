@@ -17,7 +17,6 @@ export default async function BlogDetailsPage({ params }: { params: Promise<{ id
   }
 
   return (
-  return (
     <div className="no-scrollbar scroll-smooth w-full flex flex-col min-h-screen bg-white">
       <div className="max-w-[860px] mx-auto w-full px-5 md:px-8 flex flex-col gap-8 pb-16 flex-1">
         <Header />
