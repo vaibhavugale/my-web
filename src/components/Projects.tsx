@@ -32,29 +32,31 @@ const Projects = () => {
                 <h2 className="text-2xl font-bold tracking-tight text-[#37352f]">Selected Projects</h2>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div className="flex flex-col gap-4">
                 {currentData?.map((blog) => (
-                    <div key={blog.id} className="brutal-card p-4 flex flex-col gap-4 brutal-card-hover group">
-                        <div className="h-44 md:h-52 overflow-hidden rounded-md border border-[#e9e9e7] relative bg-[#f7f6f5]">
+                    <div key={blog.id} className="brutal-card p-4 sm:p-5 flex flex-col sm:flex-row gap-5 brutal-card-hover group items-start sm:items-center">
+                        <div className="w-full sm:w-48 md:w-56 h-36 sm:h-32 shrink-0 overflow-hidden rounded-md border border-[#e9e9e7] relative bg-[#f7f6f5]">
                             <Image 
                                 src={blog?.image} 
                                 alt={blog?.title} 
                                 className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300" 
                             />
                         </div>
-                        <div className="flex flex-col gap-2 flex-1">
-                          <h3 className="text-base font-semibold text-[#37352f] leading-snug line-clamp-1">{blog?.title}</h3>
-                          <p className="text-xs text-[#5a5853] leading-relaxed line-clamp-3">{blog?.desc}</p>
+                        <div className="flex flex-col gap-2 flex-1 min-w-0">
+                          <h3 className="text-base sm:text-lg font-semibold text-[#37352f] leading-snug">{blog?.title}</h3>
+                          <p className="text-xs sm:text-sm text-[#5a5853] leading-relaxed line-clamp-2">{blog?.desc}</p>
+                          <div className="pt-1">
+                            <a 
+                                href={blog.link} 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                className="brutal-btn inline-flex items-center gap-1.5 text-xs font-medium"
+                            >
+                                <span>Open Project</span>
+                                <ExternalLink className="w-3.5 h-3.5 text-[#787774]" />
+                            </a>
+                          </div>
                         </div>
-                        <a 
-                            href={blog.link} 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
-                            className="brutal-btn flex items-center justify-center gap-1.5 mt-auto w-full text-xs font-medium"
-                        >
-                            <span>Open Project</span>
-                            <ExternalLink className="w-3.5 h-3.5 text-[#787774]" />
-                        </a>
                     </div>
                 ))}
             </div>
