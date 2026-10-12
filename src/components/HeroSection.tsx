@@ -28,19 +28,21 @@ const HeroSection = () => {
             target="_blank" 
             href="https://docs.google.com/document/d/1NfRdbtz7irwyIhi8wbRGlUsJDmsvtBk7G7CosLy_OBw/edit?usp=sharing" 
             download="vaibhav_ugale" 
-            className="brutal-btn !bg-[#2383e2] !text-white !border-[#1e70c2] hover:!bg-[#1c73c9] gap-2 font-medium"
+            className="brutal-btn !bg-[#2383e2] !text-white !border-[#1e70c2] hover:!bg-[#1c73c9] gap-2 font-medium group transition-transform duration-150 hover:-translate-y-0.5"
           >
             <span>Resume</span>
-            <Download className="w-4 h-4" />
+            <Download className="w-4 h-4 transition-transform duration-200 group-hover:translate-y-0.5" />
           </a>
           
           <a 
             href="https://github.com/vaibhavugale" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="brutal-btn gap-2 text-[#37352f] hover:bg-[#efedea]"
+            className="brutal-btn gap-2 text-[#37352f] hover:bg-[#efedea] group transition-transform duration-150 hover:-translate-y-0.5"
           >
-            <Image src={Github} className="w-4 h-4" alt="Github" />
+            <div className="transition-transform duration-200 group-hover:scale-125 group-hover:rotate-12">
+              <Image src={Github} className="w-4 h-4" alt="Github" />
+            </div>
             <span>GitHub</span>
           </a>
           
@@ -48,9 +50,11 @@ const HeroSection = () => {
             href="https://www.linkedin.com/in/vaibhavugale-959aa2217" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="brutal-btn gap-2 text-[#37352f] hover:bg-[#efedea]"
+            className="brutal-btn gap-2 text-[#37352f] hover:bg-[#efedea] group transition-transform duration-150 hover:-translate-y-0.5"
           >
-            <Image src={Linkedin} className="w-4 h-4" alt="LinkedIn" />
+            <div className="transition-transform duration-200 group-hover:scale-125 group-hover:-rotate-12">
+              <Image src={Linkedin} className="w-4 h-4" alt="LinkedIn" />
+            </div>
             <span>LinkedIn</span>
           </a>
         </div>

@@ -75,7 +75,7 @@ const Skills = () => {
       ]
     },
     {
-      title: "DevOps & Workflow",
+      title: "Other Tools",
       skills: [
         { name: "Git", icon: GithubIcon },
         { name: "Docker", icon: DockerIcon },
@@ -93,7 +93,7 @@ const Skills = () => {
         <span className="text-xl">🛠️</span>
         <h2 className="text-2xl font-bold tracking-tight text-[#37352f]">Tech Stack & Skills</h2>
       </div>
-      
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {categories.map((cat) => (
           <div key={cat.title} className="brutal-card p-5 flex flex-col gap-4 bg-white">
@@ -102,13 +102,18 @@ const Skills = () => {
             </div>
             <div className="flex flex-wrap gap-2">
               {cat.skills.map((skill) => (
-                <div key={skill.name} className="flex items-center gap-2 px-3 py-1.5 rounded-md bg-[#f7f6f5] hover:bg-[#efedea] border border-[#e9e9e7] transition-colors cursor-default">
+                <div 
+                  key={skill.name} 
+                  className="group/skill flex items-center gap-2 px-3 py-1.5 rounded-md bg-[#f7f6f5] hover:bg-white hover:border-[#d3d3d0] hover:shadow-[0_2px_8px_rgba(15,15,15,0.06)] hover:-translate-y-0.5 active:translate-y-0 border border-[#e9e9e7] transition-all duration-200 cursor-default select-none"
+                >
                   {skill.icon ? (
-                    <Image src={skill.icon} alt={skill.name} className="w-4 h-4 object-contain" />
+                    <div className="w-4 h-4 shrink-0 transition-transform duration-200 ease-out group-hover/skill:scale-125 group-hover/skill:rotate-6">
+                      <Image src={skill.icon} alt={skill.name} className="w-full h-full object-contain" />
+                    </div>
                   ) : (
-                    <span className="w-2 h-2 rounded-full bg-[#2383e2]"></span>
+                    <span className="w-2 h-2 rounded-full bg-[#2383e2] transition-transform duration-200 group-hover/skill:scale-150"></span>
                   )}
-                  <span className="text-sm font-medium text-[#37352f]">{skill.name}</span>
+                  <span className="text-sm font-medium text-[#37352f] transition-colors duration-150 group-hover/skill:text-black">{skill.name}</span>
                 </div>
               ))}
             </div>
