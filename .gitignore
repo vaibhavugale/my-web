@@ -24,3 +24,8 @@ dist-ssr
 *.sw?
 
 .yarn 
+
+# Next.js build and outputs
+.next/
+out/
+.vercel

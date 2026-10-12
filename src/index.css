@@ -1,44 +1,45 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-roboto), sans-serif;
+  --font-mono: var(--font-roboto-mono), monospace;
+}
 
 @layer base {
   body {
-    font-family: 'Space Grotesk', sans-serif;
     background-color: #fafafa;
     color: #111111;
-  }
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Space Grotesk', sans-serif;
-    font-weight: 700;
-  }
-  .font-mono {
-    font-family: 'Space Mono', monospace;
   }
 }
 
 @layer utilities {
   .brutal-card {
-    @apply border-2 border-black bg-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] transition-transform duration-200;
+    @apply border-2 border-black bg-white shadow-[4px_4px_0px_0px_#000] transition-transform duration-200;
   }
+
   .brutal-card-hover {
-    @apply hover:translate-y-[-4px] hover:translate-x-[-4px] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)];
+    @apply hover:translate-y-[-4px] hover:translate-x-[-4px] hover:shadow-[8px_8px_0px_0px_#000];
   }
+
   .brutal-btn {
-    @apply border-2 border-black bg-black text-white px-6 py-3 font-bold uppercase tracking-wider shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:translate-y-[-2px] hover:translate-x-[-2px] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all;
+    @apply border-2 border-black bg-black text-white px-6 py-3 font-bold uppercase tracking-wider shadow-[4px_4px_0px_0px_#000] hover:translate-y-[-2px] hover:translate-x-[-2px] hover:shadow-[6px_6px_0px_0px_#000] transition-all;
   }
+
   .brutal-tag {
-    @apply border-2 border-black bg-white px-3 py-1 text-sm font-bold shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] font-mono uppercase;
+    @apply border-2 border-black bg-white px-3 py-1 text-sm font-bold shadow-[2px_2px_0px_0px_#000] font-mono uppercase;
   }
+
   .bg-grid {
     background-image: radial-gradient(#000000 1px, transparent 1px);
     background-size: 24px 24px;
     background-position: 0 0;
     opacity: 0.05;
   }
-  
+
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
+
   .no-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
